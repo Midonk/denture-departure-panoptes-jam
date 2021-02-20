@@ -1,9 +1,11 @@
 ﻿
 using UnityEngine;
+using Cinemachine;
 
 public class MountTurret : MonoBehaviour
 {
-    private Transform turretSeat;
+    public CinemachineVirtualCamera cinemachineVirtualCamera;
+    private TurretAccessor turretAccessor;
     private Vector3 outTurretPos;
     private Quaternion outTurretRot;
     private bool inTurret = false;
@@ -14,31 +16,39 @@ public class MountTurret : MonoBehaviour
     private void Awake() {
         cc = GetComponent<CharacterController>();
         charMove = GetComponent<CharMove>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(InputManager.Instance.Shoot){
+        if(InputManager.Instance.InteractDown){
             if(inTurret){
                 Debug.Log("dismount");
                 cc.enabled = true;
                 charMove.enabled = true;
                 inTurret = false;
                 transform.position = outTurretPos;
+                player.parent = transform;
+                player.localPosition = Vector3.zero;
                 player.rotation = outTurretRot;
+                cinemachineVirtualCamera.Priority -= 10;
+                turretAccessor.SetActiveController(false);
             }
 
-            else if(turretSeat){
+            else if(turretAccessor){
                 Debug.Log("mount");
                 outTurretPos = transform.position;
                 outTurretRot = transform.rotation;
                 cc.enabled = false;
                 charMove.enabled = false;
                 //set la position du perso dans la tourelle
-                transform.position = turretSeat.position;
-                player.rotation = turretSeat.rotation;
+                transform.position = turretAccessor.seat.position;
+                player.parent = turretAccessor.seat;
+                player.rotation = turretAccessor.seat.rotation;
                 inTurret = true;
+                cinemachineVirtualCamera.Priority += 10;
+                turretAccessor.SetActiveController(true);
             }
         }
     }
@@ -47,7 +57,7 @@ public class MountTurret : MonoBehaviour
         GameObject turret = other.gameObject;
         if(turret.tag == "Turret"){
             Debug.Log("get seat");
-            turretSeat = turret.GetComponent<TurretAccessor>().seat;
+            turretAccessor = turret.GetComponent<TurretAccessor>();
         }
     }
     
@@ -55,7 +65,7 @@ public class MountTurret : MonoBehaviour
         GameObject turret = other.gameObject;
         if(turret.tag == "Turret"){
             Debug.Log("no seat");
-            turretSeat = null;
+            turretAccessor = null;
         }
     }
 }

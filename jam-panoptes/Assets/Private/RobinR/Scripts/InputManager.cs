@@ -6,10 +6,16 @@ public class InputManager : Singleton<InputManager>
 {
     private Vector2 _MovementDirection;
     private Vector2 _MouseOffset;
-    private Vector2 LastMousePos;
-    private Vector2 CurrentMousePos;
+
+    public bool Interact{get;set;}
+    public bool InteractUp{get;set;}
+    public bool InteractDown{get;set;}
     public bool Shoot{get;set;}
+    public bool ShootUp{get; set;}
+    public bool ShootDown{get; set;}
     public bool Sprint{get;set;}
+    public bool SprintUp{get;set;}
+    public bool SprintDown{get;set;}
 
     public Vector2 NormalizedMovementDirection{
         get{return _MovementDirection.normalized;}
@@ -20,8 +26,8 @@ public class InputManager : Singleton<InputManager>
         get{return _MovementDirection;}
     }
 
-    public Vector2 NormalizedMouseOffset{
-        get{return _MouseOffset.normalized;}
+    public Vector2 MouseOffset{
+        get{return _MouseOffset;}
         set{_MouseOffset = value;}
     }
 
@@ -32,8 +38,6 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
-        CurrentMousePos = Input.mousePosition;
-
         _MovementDirection = new Vector2();
         if(Input.GetAxis("Horizontal") != 0)
         {
@@ -46,10 +50,17 @@ public class InputManager : Singleton<InputManager>
         }
 
         Shoot = Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space);
+        ShootDown = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
+        ShootUp = Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space);
+
         Sprint = Input.GetKey(KeyCode.LeftShift);
+        SprintDown = Input.GetKeyDown(KeyCode.LeftShift);
+        SprintUp = Input.GetKeyUp(KeyCode.LeftShift);
 
-        _MouseOffset = LastMousePos - CurrentMousePos;
+        Interact = Input.GetKey(KeyCode.E);
+        InteractDown = Input.GetKeyDown(KeyCode.E);
+        InteractUp = Input.GetKeyUp(KeyCode.E);
 
-        LastMousePos = CurrentMousePos;
+        _MouseOffset = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
 }

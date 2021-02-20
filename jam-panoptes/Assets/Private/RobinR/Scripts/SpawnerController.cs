@@ -7,13 +7,10 @@ public class SpawnerController : MonoBehaviour
     [Header("Parameter")]
     public float SpawnRadius = 45.0f;
     public float SpawnTime = 2.0f;
-    [Range(0.0f, 1.0f)]
-    public float CheeseSpawnRate = 0.8f;
 
     [Header("Reference")]
     public Transform TargetPoint;
-    public TargetController CheesePrefab;
-    public TargetController BulletPrefab;
+    public TargetShip ShipPrefab;
 
     private float SpawnTimer;
 
@@ -23,19 +20,13 @@ public class SpawnerController : MonoBehaviour
 
         if(SpawnTimer >= SpawnTime)
         {
-            TargetController target = null;
+            TargetShip ship = null;
             Vector2 SpawnDelta = Random.insideUnitCircle * SpawnRadius;
             Vector3 SpawnPos = transform.position + transform.right * SpawnDelta.x + transform.up * SpawnDelta.y;
 
-            if(Random.value < CheeseSpawnRate)
-            {
-                target = Instantiate<TargetController>(CheesePrefab, SpawnPos, Quaternion.identity);
-            }else
-            {
-                target = Instantiate<TargetController>(BulletPrefab, SpawnPos, Quaternion.identity);
-            }
-
-            target.transform.LookAt(TargetPoint);
+            ship = Instantiate<TargetShip>(ShipPrefab, SpawnPos, Quaternion.identity);
+            ship.TargetTurret = TargetPoint;
+            ship.Spawner = transform;
 
             SpawnTimer -= SpawnTime;
         }

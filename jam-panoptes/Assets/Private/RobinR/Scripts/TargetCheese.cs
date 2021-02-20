@@ -10,4 +10,11 @@ public class TargetCheese : TargetController
         GameManager.Instance.AddCheese(CheeseAmount);
         Destroy(gameObject);
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        MeshTransform.rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
+    }
 }

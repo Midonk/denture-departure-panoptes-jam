@@ -64,7 +64,7 @@ public class GameManager : Singleton<GameManager>
         Cursor.lockState = CursorLockMode.None;
         CheeseAmount = 5.0f;
         
-        GameObject[] turretObjects = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] turretObjects = GameObject.FindGameObjectsWithTag("Turret");
         Turrets = new TurretController[turretObjects.Length];
 
         for(int i = 0; i < Turrets.Length; i++)

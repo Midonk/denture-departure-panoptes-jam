@@ -8,6 +8,8 @@ public class FPSLook : MonoBehaviour
 
     public Transform body;
 
+    public bool LockY{get;set;} = false;
+
     private float xRotation = 0;
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class FPSLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         Vector3 currentRot = transform.localRotation.eulerAngles;
         currentRot.x = xRotation;
+        if(LockY) currentRot.y = 0;
         transform.localRotation = Quaternion.Euler(currentRot);
     }
 }

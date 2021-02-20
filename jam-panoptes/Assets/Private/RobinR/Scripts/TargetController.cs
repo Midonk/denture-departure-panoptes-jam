@@ -26,20 +26,19 @@ public abstract class TargetController : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         tag = "Target";
-        MeshTransform.rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.transform.CompareTag("Player") && !HasHit)
+        if(other.transform.CompareTag("Turret") && !HasHit)
         {
             Hit(other.gameObject.GetComponent<TurretController>());
             HasHit = true;

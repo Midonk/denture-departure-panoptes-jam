@@ -24,6 +24,7 @@ public class TurretController : MonoBehaviour
     public Camera MainCamera;
     public Transform Head;
     public Transform CannonPivot;
+    public GameObject HUD;
 
     [Header("Hiddens")]
     private bool ShootLeft; //alterne les tirs
@@ -34,6 +35,7 @@ public class TurretController : MonoBehaviour
     private float ShootTimer;
     private float _ReloadTimer;
     private int _BulletAmount;
+    
 
     // #Exposure
     private int Health{
@@ -70,6 +72,8 @@ public class TurretController : MonoBehaviour
             OnReloadChange?.Invoke(_ReloadTimer);
         }
     }
+
+    public bool Controllable{get;set;}
 
     // #Events
     public delegate void BulletAmountChangeHandler(int amount);
@@ -114,77 +118,59 @@ public class TurretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(Input.GetMouseButtonDown(0))
+        if(Controllable)
         {
-            RaycastHit hit;
-            Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
-            
-            if (Physics.Raycast(ray, out hit)) {
-                Transform objectHit = hit.transform;
-                
-                TargetRotation = Quaternion.LookRotation(objectHit.position - Head.position).eulerAngles;
-                InitialPivotRotation = CannonPivot.rotation;
-                InitialHeadRotation = Head.rotation;
-                RotationProgress = 0.0f;
-            }
-        }
+            CurrentPivotRotation = Mathf.Clamp(CurrentPivotRotation + (-InputManager.Instance.MouseOffset.y * Sensitivity * Time.deltaTime), VerticalRotationRange.x, VerticalRotationRange.y);
+            CurrentHeadRotation += InputManager.Instance.MouseOffset.x * Sensitivity * Time.deltaTime;
 
-        if(RotationProgress < 1.0f)
-        {
-            if(RotationProgress <= 0.5f){
-                RotationProgress += Time.deltaTime * AngularSpeed;
-                CannonPivot.rotation = Quaternion.Lerp(InitialPivotRotation, Quaternion.Euler(InitialPivotRotation.eulerAngles.x, TargetRotation.y, 0.0f), RotationProgress * 2.0f);
-                Head.rotation = Quaternion.Lerp(InitialHeadRotation, Quaternion.Euler(0.0f, TargetRotation.y, 0.0f), RotationProgress * 2.0f);
-
-                if(RotationProgress > 0.5f)
-                {
-                    InitialPivotRotation = CannonPivot.rotation;
-                }
-            }else{
-                RotationProgress += Time.deltaTime * AngularSpeed;
-                CannonPivot.rotation = Quaternion.Lerp(InitialPivotRotation, Quaternion.Euler(TargetRotation.x, TargetRotation.y, 0.0f), RotationProgress - 0.5f);
-            }
-        }*/
-
-        CurrentPivotRotation = Mathf.Clamp(CurrentPivotRotation + (InputManager.Instance.NormalizedMouseOffset.y * Sensitivity * Time.deltaTime), VerticalRotationRange.x, VerticalRotationRange.y);
-        CurrentHeadRotation += -InputManager.Instance.NormalizedMouseOffset.x * Sensitivity * Time.deltaTime;
-
-        Head.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
-        CannonPivot.rotation = Quaternion.Euler(CurrentPivotRotation, CurrentHeadRotation, 0.0f);
+            Head.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
+            CannonPivot.rotation = Quaternion.Euler(CurrentPivotRotation, CurrentHeadRotation, 0.0f);
 
 
-        if(BulletAmount > 0)
-        {
-            ShootTimer += Time.deltaTime;
-
-            if(ShootTimer >= ShootRate && InputManager.Instance.Shoot)
+            if(BulletAmount > 0)
             {
-                Ray ray = new Ray(CannonPivot.position, CannonPivot.forward);
+                ShootTimer += Time.deltaTime;
 
-                foreach (RaycastHit item in Physics.RaycastAll(ray, MaxRange))
+                if(ShootTimer >= ShootRate && InputManager.Instance.Shoot)
                 {
-                    if(item.transform.CompareTag("Target"))
+                    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+                    foreach (RaycastHit item in Physics.RaycastAll(ray, MaxRange))
                     {
-                        item.transform.GetComponent<TargetController>().Damage(1);
-                        break;
+                        if(item.transform.CompareTag("Target"))
+                        {
+                            item.transform.GetComponent<TargetController>().Damage(1);
+                            break;
+                        }
+                    }
+
+                    BulletAmount--;
+                    ShootTimer = 0;
+
+                    if(BulletAmount == 0)
+                    {
+                        ReloadTimer = 0;
                     }
                 }
+            }else
+            {
+                ReloadTimer += Time.deltaTime;
 
-                BulletAmount--;
-                ShootTimer = 0;
-
-                if(BulletAmount == 0)
+                if(ReloadTimer >= ReloadTime)
                 {
-                    ReloadTimer = 0;
+                    BulletAmount = MaxBulletAmount;
                 }
+            }
+
+            if(!HUD.activeInHierarchy)
+            {
+                HUD.SetActive(true);
             }
         }else
         {
-            ReloadTimer += Time.deltaTime;
-
-            if(ReloadTimer >= ReloadTime)
+            if(HUD.activeInHierarchy)
             {
-                BulletAmount = MaxBulletAmount;
+                HUD.SetActive(false);
             }
         }
     }
