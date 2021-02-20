@@ -19,7 +19,7 @@ public class MountTurret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(InputManager.Instance.Shoot){
             if(inTurret){
                 Debug.Log("dismount");
                 cc.enabled = true;

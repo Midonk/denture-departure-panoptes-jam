@@ -15,6 +15,10 @@ public class InputManager : Singleton<InputManager>
         get{return _MovementDirection.normalized;}
         set{_MovementDirection = value;}
     }
+    
+    public Vector2 RawMovementDirection{
+        get{return _MovementDirection;}
+    }
 
     public Vector2 NormalizedMouseOffset{
         get{return _MouseOffset.normalized;}
@@ -30,6 +34,7 @@ public class InputManager : Singleton<InputManager>
     {
         CurrentMousePos = Input.mousePosition;
 
+        _MovementDirection = new Vector2();
         if(Input.GetAxis("Horizontal") != 0)
         {
             _MovementDirection.x = Input.GetAxis("Horizontal");

@@ -30,8 +30,7 @@ public class CharMove : MonoBehaviour
         velocity = new Vector3(0, velocity.y, 0);
         velocity += Physics.gravity * dt;
 
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        //input = input.normalized;
+        input = InputManager.Instance.RawMovementDirection;
 
         velocity += input.y * cam.forward * dt * moveSpeed;
         velocity += input.x * cam.right * dt * moveSpeed;
