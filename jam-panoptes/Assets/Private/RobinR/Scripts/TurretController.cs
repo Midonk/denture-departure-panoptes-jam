@@ -84,7 +84,7 @@ public class TurretController : MonoBehaviour
     public delegate void DeathHandler(bool isDead);
     public event DeathHandler OnDeath;
 
-    void Damage(int amount)
+    public void Damage(int amount)
     {
         Health = Mathf.Clamp(Health - amount, 0, MaxHealth);
 
@@ -99,7 +99,7 @@ public class TurretController : MonoBehaviour
 
     private void This_OnDeath(bool next)
     {
-        gameObject.SetActive(!next);
+        //gameObject.SetActive(!next);
     }
 
     // Start is called before the first frame update
@@ -165,7 +165,7 @@ public class TurretController : MonoBehaviour
                 {
                     if(item.transform.CompareTag("Target"))
                     {
-                        Debug.LogWarning(string.Format("Touché {0}", item.transform.name));
+                        item.transform.GetComponent<TargetController>().Damage(1);
                         break;
                     }
                 }

@@ -7,13 +7,10 @@ public class UI_Turret_Controller : MonoBehaviour
 {
     [Header("References")]
     public TurretController Turret;
-
     public Text Text_BulletAmount;
     public Image Image_ReloadTimer;
     public Image Image_HealthBar;
 
-
-    
 
     private void TurretController_OnBulletAmountChange(int next)
     {   
