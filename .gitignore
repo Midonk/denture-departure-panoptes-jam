@@ -5,6 +5,7 @@
 [Bb]uilds/
 [Uu]serSettings/
 Assets/AssetStoreTools*
+ProjectSettings/HDRPProjectSettings.asset
 
 # Visual Studio cache directory
 .vs/

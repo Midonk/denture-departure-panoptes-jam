@@ -8,7 +8,7 @@ public class TurretController : MonoBehaviour
 
     [Range(1, 1000)]
     public int MaxHealth = 10;
-    [Range(0.0f, 10.0f)]
+    [Range(0.0f, 200.0f)]
     public float Sensitivity = 2.0f;
     [Range(0.0f, 2.0f)]
     public float ShootRate = 0.4f;
@@ -27,9 +27,10 @@ public class TurretController : MonoBehaviour
 
     [Header("Hiddens")]
     private bool ShootLeft; //alterne les tirs
+    private bool _IsDead = false;
     private float CurrentHeadRotation;
     private float CurrentPivotRotation;
-    private int _Health;
+    private static int _Health;
     private float ShootTimer;
     private float _ReloadTimer;
     private int _BulletAmount;
@@ -42,6 +43,18 @@ public class TurretController : MonoBehaviour
             OnHealthChange?.Invoke(_Health);
         }
     }
+
+    private bool IsDead{
+        get{return _IsDead;}
+        set{
+            if(_IsDead != value)
+            {
+                OnDeath?.Invoke(value);
+            }
+            _IsDead = value;
+        }
+    }
+
     private int BulletAmount{
         get{return _BulletAmount;}
         set{
@@ -49,6 +62,7 @@ public class TurretController : MonoBehaviour
             OnBulletAmountChange?.Invoke(_BulletAmount);
         }
     }
+
     private float ReloadTimer{
         get{return _ReloadTimer;}
         set{
@@ -67,12 +81,34 @@ public class TurretController : MonoBehaviour
     public delegate void HealthHandler(int next);
     public event HealthHandler OnHealthChange;
 
+    public delegate void DeathHandler(bool isDead);
+    public event DeathHandler OnDeath;
+
+    void Damage(int amount)
+    {
+        Health = Mathf.Clamp(Health - amount, 0, MaxHealth);
+
+        if(Health > 0)
+        {
+            IsDead = false;
+        }else
+        {
+            IsDead = true;
+        }
+    }
+
+    private void This_OnDeath(bool next)
+    {
+        gameObject.SetActive(!next);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         BulletAmount = MaxBulletAmount;
         Health = MaxHealth;
+
+        OnDeath += This_OnDeath;
     }
 
     // Update is called once per frame
@@ -110,8 +146,8 @@ public class TurretController : MonoBehaviour
             }
         }*/
 
-        CurrentPivotRotation = Mathf.Clamp(CurrentPivotRotation + (InputManager.Instance.NormalizedMouseOffset.y * Sensitivity), VerticalRotationRange.x, VerticalRotationRange.y);
-        CurrentHeadRotation += -InputManager.Instance.NormalizedMouseOffset.x * Sensitivity;
+        CurrentPivotRotation = Mathf.Clamp(CurrentPivotRotation + (InputManager.Instance.NormalizedMouseOffset.y * Sensitivity * Time.deltaTime), VerticalRotationRange.x, VerticalRotationRange.y);
+        CurrentHeadRotation += -InputManager.Instance.NormalizedMouseOffset.x * Sensitivity * Time.deltaTime;
 
         Head.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
         CannonPivot.rotation = Quaternion.Euler(CurrentPivotRotation, CurrentHeadRotation, 0.0f);
