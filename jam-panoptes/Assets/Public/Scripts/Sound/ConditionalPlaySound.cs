@@ -11,8 +11,10 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     public AudioClip[] ennemiAbattu;
     public AudioClip[] vaisseauCritic;
     public AudioClip firstCheese;
-    public AudioClip victoir;
-    public AudioClip echec;
+    public AudioClip[] victoirVoice;
+    public AudioClip victoirMusic;
+    public AudioClip[] echecVoice;
+    public AudioClip echecMusic;
     private AudioSource sourceMusic;
     private AudioSource sourceVoice;
 
@@ -24,20 +26,26 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     // Start is called before the first frame update
     void Start()
     {
-        //TurretController.OnHealthChange += 
-        //vaisseau se fait attaquer + état critique
-        //test hit fromage => GameManager addCheese()
-        //vaisseau enemi abattu => targetShip
-        //victoire => GameManager gameOver()
-        //défaite => GameManager gameOver()
+        TurretController.OnHealthChange += PLayDamage;
     }
 
-    public void PlayAttacked(){
+    public void PLayDamage(int health){
+        bool critic = health <= TurretController.MaxHealth / 6; 
+        if(critic){
+            PlayAttackedCritic();
+        }
+
+        else{
+            PlayAttacked();
+        }
+    }
+
+    private void PlayAttacked(){
         AudioClip clip = vaisseauHit[Random.Range(0, vaisseauHit.Length - 1)];
         PlayVoice(clip);
     }
     
-    public void PlayAttackedCritic(){
+    private void PlayAttackedCritic(){
         AudioClip clip = vaisseauCritic[Random.Range(0, vaisseauCritic.Length - 1)];
         PlayVoice(clip);
     }
@@ -53,17 +61,20 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     }
 
     public void PlayVictoire(){
-        AudioClip clip = victoir;
-        PlayMusic(clip);
+        AudioClip clip = victoirVoice[Random.Range(0, ennemiAbattu.Length - 1)];
+        PlayVoice(clip);
+        PlayMusic(victoirMusic);
     }
 
     public void PlayEchec(){
-        AudioClip clip = echec;
-        PlayMusic(clip);
+        AudioClip clip = echecVoice[Random.Range(0, echecVoice.Length - 1)];
+        PlayVoice(clip);
+        PlayMusic(echecMusic);
     }
 
     private void PlayMusic(AudioClip clip){
         if(!sourceMusic.isPlaying){
+            sourceMusic.loop = false;
             sourceMusic.clip = clip;
             sourceMusic.Play();
         }

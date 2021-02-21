@@ -41,7 +41,7 @@ public class TargetShip : TargetController
 
         if(Health <= 0)
         {
-            // blablabla
+            ConditionalPlaySound.Instance.PlayennemiAbattu();
             Destroy(gameObject);
         }
     }

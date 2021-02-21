@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Media;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -15,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     private int _AliveTurretsAmount;
     private float _GameWonTimer;
     private float _CheeseAmount;
+    private bool firstCheese = true;
 
     public SpawnerController[] spawners;
 
@@ -54,11 +56,23 @@ public class GameManager : Singleton<GameManager>
 
     public void AddCheese(float amount)
     {
+        if(firstCheese){
+            ConditionalPlaySound.Instance.PlayFirstCheese();
+        }
+
         CheeseAmount = Mathf.Clamp(CheeseAmount + amount, 0, MaxCheeseAmount);
     }
     private void GameOver(bool won)
     {
         Debug.Log(won? "Gagné" : "Perdu");
+        if(won){
+            ConditionalPlaySound.Instance.PlayVictoire();
+        }
+
+        else{
+            ConditionalPlaySound.Instance.PlayEchec();
+        }
+
         SetPause(true);
         HUDManager.Instance.ShowPanel(won? 2 : 3);
         InGame = false;

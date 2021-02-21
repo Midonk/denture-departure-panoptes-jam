@@ -19,7 +19,7 @@ public class UI_Turret_Controller : MonoBehaviour
 
     private void TurretController_OnHealthChange(int next)
     {
-        Image_HealthBar.fillAmount = Mathf.Clamp01(next * 1.0f / Turret.MaxHealth);
+        Image_HealthBar.fillAmount = Mathf.Clamp01(next * 1.0f / TurretController.MaxHealth);
     }
 
     private void TurretController_OnReloadTimerChange(float next)

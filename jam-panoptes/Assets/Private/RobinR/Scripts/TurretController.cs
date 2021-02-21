@@ -7,7 +7,7 @@ public class TurretController : MonoBehaviour
     [Header("Parameters")]
 
     [Range(1, 1000)]
-    public int MaxHealth = 10;
+    public static int MaxHealth = 10;
     [Range(0.0f, 200.0f)]
     public float Sensitivity = 2.0f;
     [Range(0.0f, 2.0f)]
