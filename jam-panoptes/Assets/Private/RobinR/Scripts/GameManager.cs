@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
     private bool firstCheese = true;
 
     public SpawnerController[] spawners;
+    public CompasControler compas;
 
     private int AliveTurretsAmount{
         get{return _AliveTurretsAmount;}
@@ -105,9 +106,20 @@ public class GameManager : Singleton<GameManager>
             
             Turrets[i].OnDeath += TurretController_OnDeath;
         }
+        ActivateSpawner(0);
 
         AliveTurretsAmount = Turrets.Length;
         GameWonTimer = 0;
+    }
+
+    public void ActivateSpawner(int index)
+    {
+        for(int i = 0; i < spawners.Length; i++)
+        {
+            spawners[i].gameObject.SetActive(i == index);
+            if(i == index)
+                compas.TargetPosition = new Vector2(spawners[i].transform.position.x, spawners[i].transform.position.z);
+        }
     }
 
     protected override void Awake()
