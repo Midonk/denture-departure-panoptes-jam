@@ -36,7 +36,7 @@ public class UI_Turret_Controller : MonoBehaviour
 
     private void Awake(){
         Turret.OnBulletAmountChange += TurretController_OnBulletAmountChange;
-        Turret.OnHealthChange += TurretController_OnHealthChange;
+        TurretController.OnHealthChange += TurretController_OnHealthChange;
         Turret.OnReloadChange += TurretController_OnReloadTimerChange;
     }
 

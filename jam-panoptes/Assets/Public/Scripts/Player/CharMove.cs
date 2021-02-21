@@ -52,4 +52,9 @@ public class CharMove : MonoBehaviour
             Gizmos.DrawLine(transform.position, transform.position + cc.velocity);
         }
     }
+
+    public void SetInTurret(bool next)
+    {
+        animator.SetBool("inTurret", next);
+    }
 }

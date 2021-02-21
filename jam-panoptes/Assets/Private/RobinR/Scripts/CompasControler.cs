@@ -25,8 +25,6 @@ public class CompasControler : MonoBehaviour
         float angle2 = Vector2.Angle(cameraV2R, direction.normalized);
         float angle1 = Vector2.Angle(cameraV2F, direction.normalized) * (angle2 < 90? -1: 1);
 
-        Debug.Log(cameraV2F);
-
         Compas.rotation = Quaternion.Euler(0.0f, 0.0f, angle1);
     }
 }

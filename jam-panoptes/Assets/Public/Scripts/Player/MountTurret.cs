@@ -36,6 +36,7 @@ public class MountTurret : MonoBehaviour
                 player.rotation = outTurretRot;
                 cinemachineVirtualCamera.Priority -= 10;
                 turretAccessor.SetActiveController(false);
+                charMove.SetInTurret(false);
             }
 
             else if(turretAccessor){
@@ -53,6 +54,7 @@ public class MountTurret : MonoBehaviour
                 inTurret = true;
                 cinemachineVirtualCamera.Priority += 10;
                 turretAccessor.SetActiveController(true);
+                charMove.SetInTurret(true);
             }
         }
     }

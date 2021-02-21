@@ -35,6 +35,16 @@ public class TargetShip : TargetController
         TravelDistance = (Destination - transform.position).magnitude;
     }
     protected override void Hit(TurretController target){}
+    public override void Damage(int amount)
+    {
+        Health -= amount;
+
+        if(Health <= 0)
+        {
+            // blablabla
+            Destroy(gameObject);
+        }
+    }
 
     protected override void Awake()
     {
