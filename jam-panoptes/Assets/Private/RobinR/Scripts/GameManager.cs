@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Hiddens")]
     private TurretController[] Turrets;
+    private bool InGame = false;
+    private bool InPause = false;
     private int _AliveTurretsAmount;
     private float _GameWonTimer;
     private float _CheeseAmount;
@@ -55,22 +57,37 @@ public class GameManager : Singleton<GameManager>
     private void GameOver(bool won)
     {
         Debug.Log(won? "Gagné" : "Perdu");
-        Time.timeScale = 0;
+        SetPause(true);
+        HUDManager.Instance.ShowPanel(won? 4 : 5);
+        InGame = false;
     }
 
-    protected override void Awake()
+    public void SetPause(bool isPaused)
     {
-        base.Awake();
-        Cursor.lockState = CursorLockMode.None;
-        CheeseAmount = 5.0f;
-        
+        InPause = isPaused;
+        Time.timeScale = InPause ? 0 : 1;
+        HUDManager.Instance.ShowPanel(InPause? 3 : 2);
+    }
+
+    public void CancelGame()
+    {
+        SetPause(false);
+        InGame = false;
+        HUDManager.Instance.ShowPanel(0);
+    }
+
+    public void NewGame()
+    {
+        SetPause(false);
+        InGame = true;
+
         GameObject[] turretObjects = GameObject.FindGameObjectsWithTag("Turret");
         Turrets = new TurretController[turretObjects.Length];
 
         for(int i = 0; i < Turrets.Length; i++)
         {
             Turrets[i] = turretObjects[i].GetComponent<TurretController>();
-            Debug.Log(Turrets[i].name);
+            
             Turrets[i].OnDeath += TurretController_OnDeath;
         }
 
@@ -78,9 +95,20 @@ public class GameManager : Singleton<GameManager>
         GameWonTimer = 0;
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    private void Start()
+    {
+        HUDManager.Instance.ShowPanel(0);
+        NewGame();
+    }
+
     private void Update()
     {
-        if(GameWonTimer < GameWonTime && CheeseAmount == 0)
+        if(InGame && GameWonTimer < GameWonTime && CheeseAmount == 0)
         {
             GameWonTimer += Time.deltaTime;
 
@@ -88,9 +116,14 @@ public class GameManager : Singleton<GameManager>
             {
                 GameOver(true);
             }
-        }else if(CheeseAmount > 0)
+        }else if(InGame && CheeseAmount > 0)
         {
             AddCheese(- Time.deltaTime);
+        }
+
+        if(InGame && InputManager.Instance.PauseDown)
+        {
+            SetPause(!InPause);
         }
     }
 }
