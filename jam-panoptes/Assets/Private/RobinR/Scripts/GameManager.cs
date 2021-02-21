@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Parameters")]
     public float GameWonTime = 10.0f;
     public float MaxCheeseAmount = 10.0f;
+    public float ChangeSpawnTime = 30.0f;
 
     [Header("Hiddens")]
     private TurretController[] Turrets;
@@ -17,8 +18,10 @@ public class GameManager : Singleton<GameManager>
     private float _GameWonTimer;
     private float _CheeseAmount;
     private bool firstCheese = true;
+    private float ChangeSpawnTimer;
 
     public SpawnerController[] spawners;
+    public CompasControler compas;
 
     private int AliveTurretsAmount{
         get{return _AliveTurretsAmount;}
@@ -105,9 +108,20 @@ public class GameManager : Singleton<GameManager>
             
             Turrets[i].OnDeath += TurretController_OnDeath;
         }
+        ActivateSpawner(0);
 
         AliveTurretsAmount = Turrets.Length;
         GameWonTimer = 0;
+    }
+
+    public void ActivateSpawner(int index)
+    {
+        for(int i = 0; i < spawners.Length; i++)
+        {
+            spawners[i].gameObject.SetActive(i == index);
+            if(i == index)
+                compas.TargetPosition = new Vector2(spawners[i].transform.position.x, spawners[i].transform.position.z);
+        }
     }
 
     protected override void Awake()
@@ -137,6 +151,17 @@ public class GameManager : Singleton<GameManager>
         }else if(InGame && CheeseAmount > 0)
         {
             AddCheese(- Time.deltaTime);
+        }
+
+        if(InGame)
+        {
+            ChangeSpawnTimer += Time.deltaTime;
+
+            if(ChangeSpawnTimer >= ChangeSpawnTime)
+            {
+                ActivateSpawner(Random.Range(0, spawners.Length));
+                ChangeSpawnTimer = 0.0f;
+            }
         }
 
         if(InGame && InputManager.Instance.PauseDown)

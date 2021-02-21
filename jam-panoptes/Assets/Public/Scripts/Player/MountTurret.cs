@@ -14,6 +14,8 @@ public class MountTurret : MonoBehaviour
     public Transform player;
     private CharacterController cc;
     private CharMove charMove;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     private void Awake() {
         cc = GetComponent<CharacterController>();
@@ -55,6 +57,7 @@ public class MountTurret : MonoBehaviour
                 cinemachineVirtualCamera.Priority += 10;
                 turretAccessor.SetActiveController(true);
                 charMove.SetInTurret(true);
+                audioSource.PlayOneShot(audioClip);
             }
         }
     }
