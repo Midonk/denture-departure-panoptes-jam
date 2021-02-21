@@ -19,6 +19,7 @@ public class TurretController : MonoBehaviour
     [Range(0.0f, 1000.0f)]
     public float MaxRange = 200.0f;
     public Vector2 VerticalRotationRange; 
+    public float VFXDuraction = 0.1f;
 
     [Header("References")]
     public Camera MainCamera;
@@ -28,6 +29,10 @@ public class TurretController : MonoBehaviour
     public Animator animator;
     public Transform LeftMouth;
     public Transform RightMouth;
+    public Transform LeftEffect;
+    public Transform RightEffect;
+    public AudioSource asource;
+    public AudioClip pan;
 
     [Header("Hiddens")]
     private bool ShootLeft; //alterne les tirs
@@ -38,6 +43,7 @@ public class TurretController : MonoBehaviour
     private float ShootTimer;
     private float _ReloadTimer;
     private int _BulletAmount;
+    private float VFXDurationTimer;
     
 
     // #Exposure
@@ -121,6 +127,13 @@ public class TurretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        VFXDurationTimer += Time.deltaTime;
+
+        if(VFXDurationTimer > VFXDuraction)
+        {
+            RightEffect.gameObject.SetActive(false);
+            LeftEffect.gameObject.SetActive(false);
+        }
         if(Controllable)
         {
             CurrentPivotRotation = Mathf.Clamp(CurrentPivotRotation + (-InputManager.Instance.MouseOffset.y * Sensitivity * Time.deltaTime), VerticalRotationRange.x, VerticalRotationRange.y);
@@ -161,14 +174,20 @@ public class TurretController : MonoBehaviour
                     if(ShootLeft)
                     {
                         animator.Play("ShootLeft");
+                        LeftEffect.gameObject.SetActive(true);
+                        RightEffect.gameObject.SetActive(false);
                         LeftMouth.Rotate(new Vector3(0.0f, 0.0f, -180f/32f), Space.Self);
                     }else
                     {
                         animator.Play("ShootRight");
+                        RightEffect.gameObject.SetActive(true);
+                        LeftEffect.gameObject.SetActive(false);
                         RightMouth.Rotate(0.0f, 0.0f, -180.0f/32.0f, Space.Self);
 
                     }
-                    
+
+                    asource.PlayOneShot(pan);
+                    VFXDurationTimer = 0;
                     ShootLeft = !ShootLeft;
 
 
