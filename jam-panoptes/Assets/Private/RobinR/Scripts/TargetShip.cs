@@ -11,6 +11,7 @@ public class TargetShip : TargetController
     public float CheeseSpawnRate = 0.8f;
     public float RandomCircleRadius;
     public Vector2 RoamingTimeRange;
+    public float SpawnerDistance;
 
     [Header("References")]
     public TargetController BulletPrefab;
@@ -29,11 +30,21 @@ public class TargetShip : TargetController
     private void UpdateDestination()
     {
         Vector2 Offset = Random.insideUnitCircle * RandomCircleRadius;
-        Destination = Spawner.position - (Spawner.forward * 50) + Spawner.right * Offset.x + Spawner.up * Offset.y;
+        Destination = Spawner.position - (Spawner.forward * SpawnerDistance) + Spawner.right * Offset.x + Spawner.up * Offset.y;
 
         TravelDistance = (Destination - transform.position).magnitude;
     }
     protected override void Hit(TurretController target){}
+    public override void Damage(int amount)
+    {
+        Health -= amount;
+
+        if(Health <= 0)
+        {
+            // blablabla
+            Destroy(gameObject);
+        }
+    }
 
     protected override void Awake()
     {

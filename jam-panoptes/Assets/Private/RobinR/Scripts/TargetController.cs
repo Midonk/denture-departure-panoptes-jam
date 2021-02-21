@@ -16,7 +16,7 @@ public abstract class TargetController : MonoBehaviour
 
     protected abstract void Hit(TurretController target);
 
-    public void Damage(int amount)
+    public virtual void Damage(int amount)
     {
         Health -= amount;
 

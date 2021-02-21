@@ -13,7 +13,6 @@ public class UI_GameOver_Controller : MonoBehaviour
     public void OnQuit(InstantiateLevel level)
     {
         level.InstantiateScene();
-        GameManager.Instance.SetPause(false);
-        HUDManager.Instance.ShowPanel(0);
+        GameManager.Instance.CancelGame();
     }
 }

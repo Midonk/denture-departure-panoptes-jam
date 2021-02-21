@@ -58,7 +58,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log(won? "Gagné" : "Perdu");
         SetPause(true);
-        HUDManager.Instance.ShowPanel(won? 4 : 5);
+        HUDManager.Instance.ShowPanel(won? 2 : 3);
         InGame = false;
     }
 
@@ -66,14 +66,13 @@ public class GameManager : Singleton<GameManager>
     {
         InPause = isPaused;
         Time.timeScale = InPause ? 0 : 1;
-        HUDManager.Instance.ShowPanel(InPause? 3 : 2);
+        HUDManager.Instance.ShowPanel(InPause? 1 : 0);
     }
 
     public void CancelGame()
     {
         SetPause(false);
         InGame = false;
-        HUDManager.Instance.ShowPanel(0);
     }
 
     public void NewGame()

@@ -17,6 +17,6 @@ public class HUDManager : Singleton<HUDManager>
     }
     protected override void Awake()
     {
-        base.Awake();
+        Instance = this;
     }
 }

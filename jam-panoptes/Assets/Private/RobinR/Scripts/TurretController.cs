@@ -25,6 +25,9 @@ public class TurretController : MonoBehaviour
     public Transform Head;
     public Transform CannonPivot;
     public GameObject HUD;
+    public Animator animator;
+    public Transform LeftMouth;
+    public Transform RightMouth;
 
     [Header("Hiddens")]
     private bool ShootLeft; //alterne les tirs
@@ -83,7 +86,7 @@ public class TurretController : MonoBehaviour
     public event ReloadingHandler OnReloadChange;
 
     public delegate void HealthHandler(int next);
-    public event HealthHandler OnHealthChange;
+    public static event HealthHandler OnHealthChange;
 
     public delegate void DeathHandler(bool isDead);
     public event DeathHandler OnDeath;
@@ -124,7 +127,7 @@ public class TurretController : MonoBehaviour
             CurrentHeadRotation += InputManager.Instance.MouseOffset.x * Sensitivity * Time.deltaTime;
 
             Head.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
-            CannonPivot.rotation = Quaternion.Euler(CurrentPivotRotation, CurrentHeadRotation, 0.0f);
+            CannonPivot.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, CurrentPivotRotation);
 
 
             if(BulletAmount > 0)
@@ -144,11 +147,41 @@ public class TurretController : MonoBehaviour
                         }
                     }
 
+                    float targetSpeed = 1/3 / ShootRate;
+
+                    if(animator.speed != targetSpeed && targetSpeed > 1)
+                    {
+                        animator.speed = targetSpeed;
+                    }else if(animator.speed != 1)
+                    {
+                        animator.speed = 1;
+                    }
+
+
+                    if(ShootLeft)
+                    {
+                        animator.Play("ShootLeft");
+                        LeftMouth.Rotate(new Vector3(0.0f, 0.0f, -180f/32f), Space.Self);
+                    }else
+                    {
+                        animator.Play("ShootRight");
+                        RightMouth.Rotate(0.0f, 0.0f, -180.0f/32.0f, Space.Self);
+
+                    }
+                    
+                    ShootLeft = !ShootLeft;
+
+
                     BulletAmount--;
                     ShootTimer = 0;
 
                     if(BulletAmount == 0)
                     {
+                        if(animator.speed != 1)
+                        {
+                            animator.speed = 1;
+                        }
+
                         ReloadTimer = 0;
                     }
                 }
@@ -156,9 +189,14 @@ public class TurretController : MonoBehaviour
             {
                 ReloadTimer += Time.deltaTime;
 
+                LeftMouth.Rotate(new Vector3(0.0f, 0.0f, 180f / ReloadTime * Time.deltaTime), Space.Self);
+                RightMouth.Rotate(new Vector3(0.0f, 0.0f, 180f / ReloadTime * Time.deltaTime), Space.Self);
+
                 if(ReloadTimer >= ReloadTime)
                 {
                     BulletAmount = MaxBulletAmount;
+                    LeftMouth.localRotation =  Quaternion.Euler (new Vector3(0, 0, 90));
+                    RightMouth.localRotation =  Quaternion.Euler (new Vector3(0, 0, 90));
                 }
             }
 
@@ -171,6 +209,9 @@ public class TurretController : MonoBehaviour
             if(HUD.activeInHierarchy)
             {
                 HUD.SetActive(false);
+                
+                 Head.rotation = Quaternion.Euler(Vector3.zero);
+                CannonPivot.rotation = Quaternion.Euler(Vector3.zero);
             }
         }
     }

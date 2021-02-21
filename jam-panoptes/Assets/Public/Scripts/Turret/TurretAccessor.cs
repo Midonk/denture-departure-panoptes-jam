@@ -4,9 +4,7 @@ using UnityEngine;
 public class TurretAccessor : MonoBehaviour
 {
     public Transform seat;
-
     public TurretController controller;
-
     private void Awake() {
         gameObject.tag = "Turret";
     }
