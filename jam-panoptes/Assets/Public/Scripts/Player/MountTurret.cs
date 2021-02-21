@@ -5,6 +5,8 @@ using Cinemachine;
 public class MountTurret : MonoBehaviour
 {
     public CinemachineVirtualCamera cinemachineVirtualCamera;
+    public TriggerScripted TriggerScript;
+
     private TurretAccessor turretAccessor;
     private Vector3 outTurretPos;
     private Quaternion outTurretRot;
@@ -38,6 +40,8 @@ public class MountTurret : MonoBehaviour
 
             else if(turretAccessor){
                 Debug.Log("mount");
+                
+                TriggerScript.Trigger();
                 outTurretPos = transform.position;
                 outTurretRot = transform.rotation;
                 cc.enabled = false;

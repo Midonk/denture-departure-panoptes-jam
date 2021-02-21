@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 6029030005725407783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.22, y: 9.671, z: 20.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6029030004293982579}
   - {fileID: 8156153139555373997}
@@ -128,13 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98399daaf7be54f42b45f4ad283f0575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
-  Health: 10
+  Speed: 100
+  Health: 5
   MeshTransform: {fileID: 6029030004293982579}
   ShootTime: 5
   CheeseSpawnRate: 0.5
-  RandomCircleRadius: 20
+  RandomCircleRadius: 100
   RoamingTimeRange: {x: 3, y: 6}
+  SpawnerDistance: 0
   BulletPrefab: {fileID: 3859067028371849970, guid: 0744b11f811e37e478537d81fe717ce6, type: 3}
   CheesePrefab: {fileID: 3720022849664600058, guid: b234bbe52b677db4984ea054b4b4c1eb, type: 3}
   Cannon: {fileID: 8156153139555373997}
