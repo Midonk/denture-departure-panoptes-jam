@@ -136,6 +136,7 @@ public class GameManager : Singleton<GameManager>
         {
             spawner.gameObject.SetActive(false);
         }
+        StratNewGameEffectively();
     }
 
     private void Update()
