@@ -16,6 +16,9 @@ public class InputManager : Singleton<InputManager>
     public bool Sprint{get;set;}
     public bool SprintUp{get;set;}
     public bool SprintDown{get;set;}
+    public bool Pause{get;set;}
+    public bool PauseUp{get;set;}
+    public bool PauseDown{get;set;}
 
     public Vector2 NormalizedMovementDirection{
         get{return _MovementDirection.normalized;}
@@ -60,6 +63,10 @@ public class InputManager : Singleton<InputManager>
         Interact = Input.GetKey(KeyCode.E);
         InteractDown = Input.GetKeyDown(KeyCode.E);
         InteractUp = Input.GetKeyUp(KeyCode.E);
+
+        Pause = Input.GetKey(KeyCode.Escape);
+        PauseDown = Input.GetKeyDown(KeyCode.Escape);
+        PauseUp = Input.GetKeyUp(KeyCode.Escape);
 
         _MouseOffset = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
