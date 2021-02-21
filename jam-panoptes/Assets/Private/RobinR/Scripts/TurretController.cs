@@ -26,7 +26,6 @@ public class TurretController : MonoBehaviour
     public Transform CannonPivot;
     public GameObject HUD;
     public Animator animator;
-
     public Transform LeftMouth;
     public Transform RightMouth;
 
@@ -87,7 +86,7 @@ public class TurretController : MonoBehaviour
     public event ReloadingHandler OnReloadChange;
 
     public delegate void HealthHandler(int next);
-    public event HealthHandler OnHealthChange;
+    public static event HealthHandler OnHealthChange;
 
     public delegate void DeathHandler(bool isDead);
     public event DeathHandler OnDeath;
@@ -158,8 +157,20 @@ public class TurretController : MonoBehaviour
                         animator.speed = 1;
                     }
 
-                    animator.Play(ShootLeft? "ShootLeft":"ShootRight");
+
+                    if(ShootLeft)
+                    {
+                        animator.Play("ShootLeft");
+                        LeftMouth.Rotate(new Vector3(0.0f, 0.0f, -180f/32f), Space.Self);
+                    }else
+                    {
+                        animator.Play("ShootRight");
+                        RightMouth.Rotate(0.0f, 0.0f, -180.0f/32.0f, Space.Self);
+
+                    }
+                    
                     ShootLeft = !ShootLeft;
+
 
                     BulletAmount--;
                     ShootTimer = 0;
@@ -169,7 +180,6 @@ public class TurretController : MonoBehaviour
                         if(animator.speed != 1)
                         {
                             animator.speed = 1;
-                            animator.Play("Reloading");
                         }
 
                         ReloadTimer = 0;
@@ -178,6 +188,9 @@ public class TurretController : MonoBehaviour
             }else
             {
                 ReloadTimer += Time.deltaTime;
+
+                LeftMouth.Rotate(new Vector3(0.0f, 0.0f, 180f / ReloadTime * Time.deltaTime), Space.Self);
+                RightMouth.Rotate(new Vector3(0.0f, 0.0f, 180f / ReloadTime * Time.deltaTime), Space.Self);
 
                 if(ReloadTimer >= ReloadTime)
                 {
