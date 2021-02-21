@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     private float _GameWonTimer;
     private float _CheeseAmount;
 
+    public SpawnerController[] spawners;
+
     private int AliveTurretsAmount{
         get{return _AliveTurretsAmount;}
         set{
@@ -102,7 +104,10 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         HUDManager.Instance.ShowPanel(0);
-        NewGame();
+        foreach (SpawnerController spawner in spawners)
+        {
+            spawner.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -124,5 +129,9 @@ public class GameManager : Singleton<GameManager>
         {
             SetPause(!InPause);
         }
+    }
+
+    public void StratNewGameEffectively(){
+        NewGame();
     }
 }
