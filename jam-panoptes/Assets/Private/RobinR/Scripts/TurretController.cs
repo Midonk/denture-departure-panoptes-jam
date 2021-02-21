@@ -25,6 +25,10 @@ public class TurretController : MonoBehaviour
     public Transform Head;
     public Transform CannonPivot;
     public GameObject HUD;
+    public Animator animator;
+
+    public Transform LeftMouth;
+    public Transform RightMouth;
 
     [Header("Hiddens")]
     private bool ShootLeft; //alterne les tirs
@@ -124,7 +128,7 @@ public class TurretController : MonoBehaviour
             CurrentHeadRotation += InputManager.Instance.MouseOffset.x * Sensitivity * Time.deltaTime;
 
             Head.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
-            CannonPivot.rotation = Quaternion.Euler(CurrentPivotRotation, CurrentHeadRotation, 0.0f);
+            CannonPivot.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, CurrentPivotRotation);
 
 
             if(BulletAmount > 0)
@@ -144,11 +148,30 @@ public class TurretController : MonoBehaviour
                         }
                     }
 
+                    float targetSpeed = 1/3 / ShootRate;
+
+                    if(animator.speed != targetSpeed && targetSpeed > 1)
+                    {
+                        animator.speed = targetSpeed;
+                    }else if(animator.speed != 1)
+                    {
+                        animator.speed = 1;
+                    }
+
+                    animator.Play(ShootLeft? "ShootLeft":"ShootRight");
+                    ShootLeft = !ShootLeft;
+
                     BulletAmount--;
                     ShootTimer = 0;
 
                     if(BulletAmount == 0)
                     {
+                        if(animator.speed != 1)
+                        {
+                            animator.speed = 1;
+                            animator.Play("Reloading");
+                        }
+
                         ReloadTimer = 0;
                     }
                 }
@@ -159,6 +182,8 @@ public class TurretController : MonoBehaviour
                 if(ReloadTimer >= ReloadTime)
                 {
                     BulletAmount = MaxBulletAmount;
+                    LeftMouth.localRotation =  Quaternion.Euler (new Vector3(0, 0, 90));
+                    RightMouth.localRotation =  Quaternion.Euler (new Vector3(0, 0, 90));
                 }
             }
 
@@ -171,6 +196,9 @@ public class TurretController : MonoBehaviour
             if(HUD.activeInHierarchy)
             {
                 HUD.SetActive(false);
+                
+                 Head.rotation = Quaternion.Euler(Vector3.zero);
+                CannonPivot.rotation = Quaternion.Euler(Vector3.zero);
             }
         }
     }

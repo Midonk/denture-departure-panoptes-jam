@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375cf2ee45cd5644b8298752e6dfcbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  Health: 3
+  Speed: 30
+  Health: 2
   MeshTransform: {fileID: 3720022848277460140}
   CheeseAmount: 2
 --- !u!54 &6327967660388077733

@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a373dc205d03a04890f2bcb50ccc871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  Health: 3
+  Speed: 30
+  Health: 2
   MeshTransform: {fileID: 3859067028063820340}
   DamageAmount: 2
 --- !u!54 &1115160018710607800
