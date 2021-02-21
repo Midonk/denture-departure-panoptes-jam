@@ -13,10 +13,12 @@ public class CharMove : MonoBehaviour
     private Transform cam; 
     private Vector3 orientation;
     public Transform player;
+    private Animator animator;
 
     private void Awake() {
         cc = GetComponent<CharacterController>();
         cam = Camera.main.transform;
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -36,7 +38,9 @@ public class CharMove : MonoBehaviour
         velocity += input.x * cam.right * dt * moveSpeed;
 
         cc.Move(velocity);
-        if(input.x != 0 || input.y != 0){
+        bool pressInput = input.x != 0 || input.y != 0;
+        animator.SetBool("isRunning", pressInput);
+        if(pressInput){
             player.rotation = Quaternion.RotateTowards(player.rotation, Quaternion.Euler(new Vector3(0 , Vector3.SignedAngle(transform.forward, cc.velocity, Vector3.up), 0)), rotateSpeed * Time.deltaTime);
         }
     }
