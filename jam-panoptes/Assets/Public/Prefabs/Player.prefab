@@ -631,6 +631,8 @@ MonoBehaviour:
   cinemachineVirtualCamera: {fileID: 1408838211683557453}
   TriggerScript: {fileID: 7464446817568419525}
   player: {fileID: 2389404498295929914}
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &7464446817568419525
 MonoBehaviour:
   m_ObjectHideFlags: 0
