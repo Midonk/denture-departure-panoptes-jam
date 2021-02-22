@@ -119,7 +119,7 @@ public class TurretController : MonoBehaviour
     void Start()
     {
         BulletAmount = MaxBulletAmount;
-        Health = MaxHealth;
+        _Health = MaxHealth;
 
         OnDeath += This_OnDeath;
     }

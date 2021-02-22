@@ -28,11 +28,11 @@ public class UI_Game_Controller : MonoBehaviour
 
     public void ShowTutorial(int index, float showTime)
     {
-        Text_Tutorial.transform.parent.gameObject.SetActive(true);
+        /* Text_Tutorial.transform.parent.gameObject.SetActive(true);
         Text_Tutorial.text = Tutorials[index];
 
         ShowTime = showTime;
-        ShowTimer = 0;
+        ShowTimer = 0; */
     }
 
     public void HideTutorial()

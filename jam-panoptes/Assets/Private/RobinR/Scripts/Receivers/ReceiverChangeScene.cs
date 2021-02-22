@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReceiverChangeScene : Receiver
 {
-    InstantiateLevel level;
+    public InstantiateLevel level;
     public override void OutCome()
     {
         level.InstantiateScene();

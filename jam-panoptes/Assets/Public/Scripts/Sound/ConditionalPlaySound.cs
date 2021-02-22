@@ -18,14 +18,11 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     private AudioSource sourceMusic;
     private AudioSource sourceVoice;
 
-    private void Awake() {
-        sourceMusic = GetComponents<AudioSource>()[0];
-        sourceVoice = GetComponents<AudioSource>()[1];
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        sourceMusic = GetComponents<AudioSource>()[0];
+        sourceVoice = GetComponents<AudioSource>()[1];
         TurretController.OnHealthChange += PLayDamage;
     }
 

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Media;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -136,7 +135,6 @@ public class GameManager : Singleton<GameManager>
         {
             spawner.gameObject.SetActive(false);
         }
-        StratNewGameEffectively();
     }
 
     private void Update()
