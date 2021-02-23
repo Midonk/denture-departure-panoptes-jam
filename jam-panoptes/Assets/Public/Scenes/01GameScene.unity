@@ -1273,11 +1273,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6663153064398186287, guid: 413b9c4dc8fe618458329b95b6d7ba47, type: 3}
---- !u!1 &220993167 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7779764981262134890, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
-  m_PrefabInstance: {fileID: 324022752}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &232302025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1295,7 +1290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.021209138
+      value: -0.02120913
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1303,11 +1298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.02276622
+      value: -0.022766212
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.68131226
+      value: 0.6813123
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1663,7 +1658,7 @@ PrefabInstance:
     - target: {fileID: 7779764981589008091, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
       propertyPath: panels.Array.data[3]
       value: 
-      objectReference: {fileID: 220993167}
+      objectReference: {fileID: 324022754}
     - target: {fileID: 7779764981654844712, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -1805,6 +1800,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &324022754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7263799223402551525, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+  m_PrefabInstance: {fileID: 324022752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &358958231
 GameObject:
   m_ObjectHideFlags: 0
