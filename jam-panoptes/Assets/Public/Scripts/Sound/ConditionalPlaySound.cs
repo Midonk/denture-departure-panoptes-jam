@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 [RequireComponent(typeof(AudioSource))]
 public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
@@ -15,6 +13,8 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     public AudioClip victoirMusic;
     public AudioClip[] echecVoice;
     public AudioClip echecMusic;
+    [Range(0, 1)]
+    public float randomness;
     private AudioSource sourceMusic;
     private AudioSource sourceVoice;
 
@@ -39,33 +39,33 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
 
     private void PlayAttacked(){
         AudioClip clip = vaisseauHit[Random.Range(0, vaisseauHit.Length - 1)];
-        PlayVoice(clip);
+        PlayVoice(clip, randomness);
     }
     
     private void PlayAttackedCritic(){
         AudioClip clip = vaisseauCritic[Random.Range(0, vaisseauCritic.Length - 1)];
-        PlayVoice(clip);
+        PlayVoice(clip, randomness);
     }
 
     public void PlayFirstCheese(){
         AudioClip clip = firstCheese;
-        PlayVoice(clip);
+        PlayVoice(clip, 1);
     }
 
     public void PlayennemiAbattu(){
         AudioClip clip = ennemiAbattu[Random.Range(0, ennemiAbattu.Length - 1)];
-        PlayVoice(clip);
+        PlayVoice(clip, randomness);
     }
 
     public void PlayVictoire(){
         AudioClip clip = victoirVoice[Random.Range(0, ennemiAbattu.Length - 1)];
-        PlayVoice(clip);
+        PlayVoice(clip, 1);
         PlayMusic(victoirMusic);
     }
 
     public void PlayEchec(){
         AudioClip clip = echecVoice[Random.Range(0, echecVoice.Length - 1)];
-        PlayVoice(clip);
+        PlayVoice(clip, randomness);
         PlayMusic(echecMusic);
     }
 
@@ -77,8 +77,10 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
         }
     }
     
-    private void PlayVoice(AudioClip clip){
-        if(!sourceVoice.isPlaying){
+    private void PlayVoice(AudioClip clip, float randomMax){
+        float rng = Random.Range(0f, 1f);
+        Debug.Log(rng);
+        if(!sourceVoice.isPlaying && rng <= randomMax){
             sourceVoice.clip = clip;
             sourceVoice.Play();
         }

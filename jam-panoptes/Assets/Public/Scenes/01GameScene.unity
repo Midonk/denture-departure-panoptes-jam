@@ -1331,7 +1331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620264457126, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.04084358
+      value: -0.040843584
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620264457126, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2329,6 +2329,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 33c86b0eeec132f4d91e37760d4d612b, type: 3}
   - {fileID: 8300000, guid: 14bfc20704707b74fa16d421d68ca84e, type: 3}
   echecMusic: {fileID: 8300000, guid: c7f0044aed27caa41a5d6f5262830999, type: 3}
+  randomness: 0.118
 --- !u!4 &751412632
 Transform:
   m_ObjectHideFlags: 0
@@ -3180,7 +3181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25af22fa068941047b10381b65b8cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameWonTime: 300
+  GameWonTime: 10
   MaxCheeseAmount: 10
   ChangeSpawnTime: 30
   spawners:

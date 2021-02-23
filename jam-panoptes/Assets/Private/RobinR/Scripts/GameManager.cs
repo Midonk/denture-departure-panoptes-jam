@@ -59,6 +59,7 @@ public class GameManager : Singleton<GameManager>
     public void AddCheese(float amount)
     {
         if(firstCheese){
+            firstCheese = false;
             ConditionalPlaySound.Instance.PlayFirstCheese();
         }
 
@@ -67,6 +68,7 @@ public class GameManager : Singleton<GameManager>
     private void GameOver(bool won)
     {
         Debug.Log(won? "Gagné" : "Perdu");
+        Reticle.UnlockCursor();
         if(won){
             ConditionalPlaySound.Instance.PlayVictoire();
         }
@@ -125,6 +127,7 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Awake()
     {
+        Reticle.LockCursor();
         base.Awake();
     }
 
