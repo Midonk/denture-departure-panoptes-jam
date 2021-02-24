@@ -1,6 +1,5 @@
-﻿using System;
+﻿
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Animation))]
 public class Panel : MonoBehaviour
@@ -35,21 +34,23 @@ public class Panel : MonoBehaviour
 
         else{
             AnimStarted();
+            AnimEnded();
         }
-        
+
         gameObject.SetActive(true);
     }
     
     public void ClosePanel(){
+        AnimationEnds += () => gameObject.SetActive(false);
+
         if(closePanel){
             animController.Play(closePanel.name);
         }
 
         else{
+            AnimStarted();
             AnimEnded();
         }
-        
-        gameObject.SetActive(false);
     }
 
     //triggered by animation

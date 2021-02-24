@@ -1286,11 +1286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1408838211683557453, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7788944
+      value: 1.7773654
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.02120913
+      value: -0.021209138
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1298,11 +1298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.022766212
+      value: -0.02276622
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6813123
+      value: 0.68131226
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065912, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1310,11 +1310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620167065915, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7788944
+      value: 1.7773654
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620264457121, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7788944
+      value: 1.7773654
       objectReference: {fileID: 0}
     - target: {fileID: 2783901620264457126, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1398,7 +1398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783901621735795857, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7788944
+      value: 1.7773654
       objectReference: {fileID: 0}
     - target: {fileID: 2783901621735795862, guid: bbfcf124ba4a33b4e814f3a5f17cff48, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1559,6 +1559,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1459204591412982066, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: sceneName
+      value: 01GameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963896917390721420, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: sceneName
+      value: 01GameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581596013649614051, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: sceneName
+      value: 00MainMenus
+      objectReference: {fileID: 0}
     - target: {fileID: 7779764981589008087, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
       propertyPath: m_Name
       value: HUDManager NEW
@@ -1784,6 +1796,38 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7779764983107708856, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: sceneName
+      value: 00MainMenus
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1270782249}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CancelGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779764983107708859, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642569128750602058, guid: eff158af107579b4ca4a1b7eb8ff9af8, type: 3}
       propertyPath: sceneName
       value: 00MainMenus
       objectReference: {fileID: 0}

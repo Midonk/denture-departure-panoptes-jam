@@ -85,6 +85,14 @@ public class GameManager : Singleton<GameManager>
     public void SetPause(bool isPaused)
     {
         InPause = isPaused;
+        if(InPause){
+            Reticle.UnlockCursor();
+        }
+
+        else{
+            Reticle.LockCursor();
+        }
+
         Time.timeScale = InPause ? 0 : 1;
         HUDManager.Instance.ShowPanel(InPause? 1 : 0);
     }

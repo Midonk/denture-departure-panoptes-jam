@@ -25,11 +25,13 @@ public class CharMove : MonoBehaviour
     void Update()
     {
         MoveChar();
+
+        Debug.Log(velocity);
     }
 
     private void MoveChar(){
         float dt = Time.deltaTime;
-        velocity = new Vector3(0, velocity.y, 0);
+        velocity = new Vector3(0, cc.isGrounded ? 0 : velocity.y, 0);
         velocity += Physics.gravity * dt;
 
         input = InputManager.Instance.RawMovementDirection;

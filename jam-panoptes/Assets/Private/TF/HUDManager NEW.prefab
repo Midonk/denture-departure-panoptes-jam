@@ -192,7 +192,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1852581320319543891}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1019,8 +1019,8 @@ MonoBehaviour:
   manualRefresh: 0
   anchorRect:
     serializedVersion: 2
-    x: 150
-    y: 27
+    x: 145.37885
+    y: 20.49821
     width: 238.36635
     height: 32.78186
   anchorVector: {x: 0, y: 0}
@@ -1263,6 +1263,7 @@ GameObject:
   - component: {fileID: 381784505384510016}
   - component: {fileID: 4533214884801554937}
   - component: {fileID: 1459204591412982066}
+  - component: {fileID: 2817388967769778304}
   m_Layer: 5
   m_Name: Button_Restart
   m_TagString: Untagged
@@ -1367,7 +1368,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 3942072972750870639}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1409,6 +1410,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Playground_Robin
+--- !u!114 &2817388967769778304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5476515687084904302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6588558073673974828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +2035,7 @@ GameObject:
   - component: {fileID: 7779764981677736789}
   - component: {fileID: 7779764981677736786}
   - component: {fileID: 7779764981677736787}
+  - component: {fileID: 6591876075124470572}
   m_Layer: 5
   m_Name: Button_Resume
   m_TagString: Untagged
@@ -2155,6 +2169,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6591876075124470572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7779764981677736785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7779764981769836839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,8 +3199,8 @@ MonoBehaviour:
   manualRefresh: 0
   anchorRect:
     serializedVersion: 2
-    x: 150
-    y: 27
+    x: 145.37885
+    y: 20.49821
     width: 238.36635
     height: 32.78186
   anchorVector: {x: 0, y: 0}
@@ -3192,6 +3218,7 @@ GameObject:
   - component: {fileID: 6291277425485996114}
   - component: {fileID: 5976277459398205406}
   - component: {fileID: 2963896917390721420}
+  - component: {fileID: 3621609585387938014}
   m_Layer: 5
   m_Name: Button_Restart
   m_TagString: Untagged
@@ -3338,3 +3365,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Playground_Robin
+--- !u!114 &3621609585387938014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507639437153360219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
