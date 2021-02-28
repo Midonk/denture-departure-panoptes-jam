@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
 {
     public AudioClip[] vaisseauHit;
@@ -15,14 +14,12 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     public AudioClip echecMusic;
     [Range(0, 1)]
     public float randomness;
-    private AudioSource sourceMusic;
-    private AudioSource sourceVoice;
+    public AudioSource sourceMusic;
+    public AudioSource sourceVoice;
 
     // Start is called before the first frame update
     void Start()
     {
-        sourceMusic = GetComponents<AudioSource>()[0];
-        sourceVoice = GetComponents<AudioSource>()[1];
         TurretController.OnHealthChange += PLayDamage;
     }
 
@@ -79,7 +76,7 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     
     private void PlayVoice(AudioClip clip, float randomMax){
         float rng = Random.Range(0f, 1f);
-        Debug.Log(rng);
+
         if(!sourceVoice.isPlaying && rng <= randomMax){
             sourceVoice.clip = clip;
             sourceVoice.Play();

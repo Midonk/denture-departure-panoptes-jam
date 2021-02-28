@@ -1222,6 +1222,7 @@ GameObject:
   - component: {fileID: 227209169}
   - component: {fileID: 227209170}
   - component: {fileID: 227209171}
+  - component: {fileID: 227209172}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1313,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555482a5c3baf94d8e5b643184d79d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  mixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
   volumePropertyName: masterVol
 --- !u!114 &227209171
 MonoBehaviour:
@@ -1327,6 +1328,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &227209172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227209167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &236248197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1459,7 @@ GameObject:
   - component: {fileID: 245182251}
   - component: {fileID: 245182252}
   - component: {fileID: 245182253}
+  - component: {fileID: 245182254}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1504,8 +1551,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555482a5c3baf94d8e5b643184d79d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  mixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
   volumePropertyName: musicVol
+--- !u!114 &245182254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245182250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &276559584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1720,7 @@ GameObject:
   - component: {fileID: 295948256}
   - component: {fileID: 295948257}
   - component: {fileID: 295948258}
+  - component: {fileID: 295948259}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1719,8 +1812,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555482a5c3baf94d8e5b643184d79d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  mixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
   volumePropertyName: sfxVol
+--- !u!114 &295948259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295948255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &305850746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,6 +2026,7 @@ GameObject:
   - component: {fileID: 372644154}
   - component: {fileID: 372644153}
   - component: {fileID: 372644156}
+  - component: {fileID: 372644157}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1970,6 +2109,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &372644154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2022,6 +2173,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destPanel: {fileID: 276559589}
   srcPanel: {fileID: 925409924}
+--- !u!114 &372644157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372644151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &375493157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2305,7 @@ GameObject:
   - component: {fileID: 400445043}
   - component: {fileID: 400445042}
   - component: {fileID: 400445041}
+  - component: {fileID: 400445044}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -2191,6 +2388,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &400445042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,6 +2438,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400445039}
   m_CullTransparentMesh: 0
+--- !u!114 &400445044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400445039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &495933462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,6 +2575,7 @@ GameObject:
   - component: {fileID: 522509283}
   - component: {fileID: 522509282}
   - component: {fileID: 522509285}
+  - component: {fileID: 522509286}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -2403,6 +2658,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &522509283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,6 +2722,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destPanel: {fileID: 1595679763}
   srcPanel: {fileID: 276559589}
+--- !u!114 &522509286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522509280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &523038929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3362,7 @@ GameObject:
   - component: {fileID: 632882422}
   - component: {fileID: 632882421}
   - component: {fileID: 632882425}
+  - component: {fileID: 632882426}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3146,6 +3459,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &632882423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,6 +3521,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &632882426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632882419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &676300253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,6 +4516,7 @@ GameObject:
   - component: {fileID: 941689192}
   - component: {fileID: 941689191}
   - component: {fileID: 941689195}
+  - component: {fileID: 941689196}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -4242,6 +4613,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &941689193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4292,6 +4675,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &941689196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941689189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &954704788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,6 +4848,7 @@ GameObject:
   - component: {fileID: 1005569481}
   - component: {fileID: 1005569480}
   - component: {fileID: 1005569484}
+  - component: {fileID: 1005569485}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4524,6 +4953,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstPanel: {fileID: 276559589}
+--- !u!114 &1005569485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005569479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e062342fdb175f4ba0a61a3449812b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  propertiesName:
+  - masterVol
+  - musicVol
+  - ambianceVol
+  - sfxVol
+  - voiceVol
+  sfxPlayer: {fileID: 2011107358}
+  selectClip: {fileID: 8300000, guid: 37c9b6d37847a3b4aa2374cdbe3e304f, type: 3}
+  acceptClip: {fileID: 8300000, guid: 2e99b4ffceff31c4f9d234c298617d9b, type: 3}
+  gameStartClip: {fileID: 8300000, guid: 2b779e261f13e6f4d85339755f1766db, type: 3}
 --- !u!1 &1036575060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,6 +5530,7 @@ GameObject:
   - component: {fileID: 1280403431}
   - component: {fileID: 1280403432}
   - component: {fileID: 1280403433}
+  - component: {fileID: 1280403434}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -5169,8 +5622,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555482a5c3baf94d8e5b643184d79d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  mixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
   volumePropertyName: voiceVol
+--- !u!114 &1280403434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280403430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1333545311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5186,6 +5684,7 @@ GameObject:
   - component: {fileID: 1333545316}
   - component: {fileID: 1333545317}
   - component: {fileID: 1333545318}
+  - component: {fileID: 1333545319}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -5259,6 +5758,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1333545317}
         m_TargetAssemblyTypeName: ClosePanelToPlay, Assembly-CSharp
         m_MethodName: DefClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayStartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5359,6 +5870,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf79047a4cc51441a0d43185cb46912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1333545319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333545311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1395642539
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,6 +5926,7 @@ GameObject:
   - component: {fileID: 1395642540}
   - component: {fileID: 1395642541}
   - component: {fileID: 1395642542}
+  - component: {fileID: 1395642543}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -5461,8 +6018,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555482a5c3baf94d8e5b643184d79d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  mixer: {fileID: 24100000, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
   volumePropertyName: ambianceVol
+--- !u!114 &1395642543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395642539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1431486636
 GameObject:
   m_ObjectHideFlags: 0
@@ -6305,6 +6907,7 @@ GameObject:
   - component: {fileID: 1690977483}
   - component: {fileID: 1690977482}
   - component: {fileID: 1690977485}
+  - component: {fileID: 1690977486}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -6387,6 +6990,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1690977483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6439,6 +7054,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destPanel: {fileID: 925409924}
   srcPanel: {fileID: 276559589}
+--- !u!114 &1690977486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690977480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1700934521
 GameObject:
   m_ObjectHideFlags: 0
@@ -7581,6 +8241,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985604176}
   m_CullTransparentMesh: 0
+--- !u!1 &2011107357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011107359}
+  - component: {fileID: 2011107358}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &2011107358
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011107357}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3551062398552778690, guid: 1cd5eb1da711df447ab9497b524d994d, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2011107359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011107357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 349.203, y: 267.18054, z: -56.69197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2036089322
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,6 +8381,7 @@ GameObject:
   - component: {fileID: 2036089325}
   - component: {fileID: 2036089324}
   - component: {fileID: 2036089327}
+  - component: {fileID: 2036089328}
   m_Layer: 5
   m_Name: Bonus
   m_TagString: Untagged
@@ -7676,6 +8464,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1005569485}
+        m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+        m_MethodName: PlayAcepted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2036089325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7728,6 +8528,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destPanel: {fileID: 844761783}
   srcPanel: {fileID: 276559589}
+--- !u!114 &2036089328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036089322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1005569485}
+          m_TargetAssemblyTypeName: InitAudioMixerSetup, Assembly-CSharp
+          m_MethodName: PlaySelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2046279647
 GameObject:
   m_ObjectHideFlags: 0

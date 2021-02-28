@@ -10,11 +10,9 @@ public class Panel : MonoBehaviour
     public delegate void AnimFallback();
     public event AnimFallback AnimationStarts;
     public event AnimFallback AnimationEnds;
-
-
     private Animation animController;
 
-    private void Awake() {
+    private void Start() {
         animController = GetComponent<Animation>();
         if(openPanel){
             animController.AddClip(openPanel, openPanel.name);

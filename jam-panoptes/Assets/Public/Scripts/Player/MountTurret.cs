@@ -15,7 +15,7 @@ public class MountTurret : MonoBehaviour
     private CharacterController cc;
     private CharMove charMove;
     public AudioSource audioSource;
-    public AudioClip audioClip;
+    public AudioClip mountTurretSound;
 
     private void Awake() {
         cc = GetComponent<CharacterController>();
@@ -57,7 +57,7 @@ public class MountTurret : MonoBehaviour
                 cinemachineVirtualCamera.Priority += 10;
                 turretAccessor.SetActiveController(true);
                 charMove.SetInTurret(true);
-                audioSource.PlayOneShot(audioClip);
+                audioSource.PlayOneShot(mountTurretSound);
             }
         }
     }
@@ -67,6 +67,7 @@ public class MountTurret : MonoBehaviour
         if(turret.tag == "Turret"){
             Debug.Log("get seat");
             turretAccessor = turret.GetComponent<TurretAccessor>();
+            
         }
     }
     

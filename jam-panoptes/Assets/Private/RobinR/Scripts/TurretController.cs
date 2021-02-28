@@ -100,6 +100,7 @@ public class TurretController : MonoBehaviour
     public void Damage(int amount)
     {
         Health = Mathf.Clamp(Health - amount, 0, MaxHealth);
+        Debug.Log(Health);
 
         if(Health > 0)
         {

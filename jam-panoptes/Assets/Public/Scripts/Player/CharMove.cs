@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CharMove : MonoBehaviour
@@ -11,7 +9,6 @@ public class CharMove : MonoBehaviour
     private Vector3 velocity = new Vector3();
     private Vector2 input;
     private Transform cam; 
-    private Vector3 orientation;
     public Transform player;
     private Animator animator;
 
@@ -25,13 +22,11 @@ public class CharMove : MonoBehaviour
     void Update()
     {
         MoveChar();
-
-        Debug.Log(velocity);
     }
 
     private void MoveChar(){
         float dt = Time.deltaTime;
-        velocity = new Vector3(0, cc.isGrounded ? 0 : velocity.y, 0);
+        velocity = new Vector3(0, velocity.y, 0);
         velocity += Physics.gravity * dt;
 
         input = InputManager.Instance.RawMovementDirection;
@@ -40,13 +35,15 @@ public class CharMove : MonoBehaviour
         velocity += input.x * cam.right * dt * moveSpeed;
 
         cc.Move(velocity);
-        bool pressInput = input.x != 0 || input.y != 0;
+        bool pressInput = input.magnitude != 0;
         animator.SetBool("isRunning", pressInput);
+
         if(pressInput){
             player.rotation = Quaternion.RotateTowards(player.rotation, Quaternion.Euler(new Vector3(0 , Vector3.SignedAngle(transform.forward, cc.velocity, Vector3.up), 0)), rotateSpeed * Time.deltaTime);
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos() {
         if(cc)
         {
@@ -54,6 +51,7 @@ public class CharMove : MonoBehaviour
             Gizmos.DrawLine(transform.position, transform.position + cc.velocity);
         }
     }
+#endif
 
     public void SetInTurret(bool next)
     {
