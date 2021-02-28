@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -21,6 +20,8 @@ public class GameManager : Singleton<GameManager>
 
     public SpawnerController[] spawners;
     public CompasControler compas;
+
+    public Animator warpEffect;
 
     private int AliveTurretsAmount{
         get{return _AliveTurretsAmount;}
@@ -71,6 +72,8 @@ public class GameManager : Singleton<GameManager>
         Reticle.UnlockCursor();
         if(won){
             ConditionalPlaySound.Instance.PlayVictoire();
+            SFXLibrary.Instance.PlayWarpSFX();
+            //warpEffect.SetTrigger("won");
         }
 
         else{
@@ -146,6 +149,8 @@ public class GameManager : Singleton<GameManager>
         {
             spawner.gameObject.SetActive(false);
         }
+        
+        warpEffect.StopPlayback();
     }
 
     private void Update()
