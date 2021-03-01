@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -72,15 +73,17 @@ public class GameManager : Singleton<GameManager>
         if(won){
             ConditionalPlaySound.Instance.PlayVictoire();
             SFXLibrary.Instance.PlayWarpSFX();
-            //warpEffect.SetTrigger("won");
+            warpEffect.SetTrigger("won");
+            StartCoroutine(EndGameVictory());
         }
 
         else{
             ConditionalPlaySound.Instance.PlayEchec();
+            HUDManager.Instance.ShowPanel(3);
+            SetPause(true);
         }
 
-        SetPause(true);
-        HUDManager.Instance.ShowPanel(won? 2 : 3);
+        //HUDManager.Instance.ShowPanel(won? 2 : 3);
         InGame = false;
     }
 
@@ -96,7 +99,9 @@ public class GameManager : Singleton<GameManager>
         }
 
         Time.timeScale = InPause ? 0 : 1;
-        HUDManager.Instance.ShowPanel(InPause? 1 : 0);
+        if(InGame){
+            HUDManager.Instance.ShowPanel(InPause? 1 : 0);
+        }
     }
 
     public void CancelGame()
@@ -186,5 +191,18 @@ public class GameManager : Singleton<GameManager>
 
     public void StratNewGameEffectively(){
         NewGame();
+    }
+
+    private IEnumerator EndGameVictory(){
+        float timer = 8;
+        float time = 0;
+
+        while(time < timer){
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        HUDManager.Instance.ShowPanel(2);
+        SetPause(true);
     }
 }

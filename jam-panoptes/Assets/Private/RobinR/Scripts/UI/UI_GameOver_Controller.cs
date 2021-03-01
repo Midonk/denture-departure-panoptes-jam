@@ -7,6 +7,7 @@ public class UI_GameOver_Controller : MonoBehaviour
     public void OnRestart(InstantiateLevel level)
     {
         level.InstantiateScene();
+        GameManager.Instance.SetPause(false);
     }
 
     public void OnQuit(InstantiateLevel level)

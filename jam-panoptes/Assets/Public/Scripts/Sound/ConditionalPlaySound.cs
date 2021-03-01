@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
@@ -67,11 +66,9 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     }
 
     private void PlayMusic(AudioClip clip){
-        if(!sourceMusic.isPlaying){
-            sourceMusic.loop = false;
-            sourceMusic.clip = clip;
-            sourceMusic.Play();
-        }
+        sourceMusic.loop = false;
+        sourceMusic.clip = clip;
+        sourceMusic.Play();
     }
     
     private void PlayVoice(AudioClip clip, float randomMax){
