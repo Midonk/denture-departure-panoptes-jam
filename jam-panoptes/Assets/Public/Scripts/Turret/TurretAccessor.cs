@@ -5,6 +5,8 @@ public class TurretAccessor : MonoBehaviour
 {
     public Transform seat;
     public TurretController controller;
+    public Transform leftController;
+    public Transform rightController;
     private AudioSource source;
     private void Awake() {
         gameObject.tag = "Turret";

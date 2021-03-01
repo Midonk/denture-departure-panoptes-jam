@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Animations.Rigging;
 
 public class MountTurret : MonoBehaviour
 {
@@ -14,13 +15,16 @@ public class MountTurret : MonoBehaviour
     public Transform player;
     private CharacterController cc;
     private CharMove charMove;
-    public AudioSource audioSource;
-    public AudioClip mountTurretSound;
+ /*    public AudioSource audioSource;
+    public AudioClip mountTurretSound; */
+    public Transform leftHand;
+    public Transform rightHand;
+    private Rig posture;
 
     private void Awake() {
         cc = GetComponent<CharacterController>();
         charMove = GetComponent<CharMove>();
-        
+        posture = GetComponentInChildren<Rig>();
     }
 
     // Update is called once per frame
@@ -39,6 +43,7 @@ public class MountTurret : MonoBehaviour
                 cinemachineVirtualCamera.Priority -= 10;
                 turretAccessor.SetActiveController(false);
                 charMove.SetInTurret(false);
+                posture.weight = 0;
             }
 
             else if(turretAccessor){
@@ -57,7 +62,12 @@ public class MountTurret : MonoBehaviour
                 cinemachineVirtualCamera.Priority += 10;
                 turretAccessor.SetActiveController(true);
                 charMove.SetInTurret(true);
-                audioSource.PlayOneShot(mountTurretSound);
+                //audioSource.PlayOneShot(mountTurretSound);
+                leftHand.position = turretAccessor.leftController.position;
+                leftHand.rotation = turretAccessor.leftController.rotation;
+                rightHand.position = turretAccessor.rightController.position;
+                rightHand.rotation = turretAccessor.rightController.rotation;
+                posture.weight = 1;
             }
         }
     }
