@@ -32,7 +32,7 @@ public class MountTurret : MonoBehaviour
     {
         if(InputManager.Instance.InteractDown){
             if(inTurret){
-                Debug.Log("dismount");
+                //Debug.Log("dismount");
                 cc.enabled = true;
                 charMove.enabled = true;
                 inTurret = false;
@@ -47,7 +47,7 @@ public class MountTurret : MonoBehaviour
             }
 
             else if(turretAccessor){
-                Debug.Log("mount");
+                //Debug.Log("mount");
                 
                 TriggerScript.Trigger();
                 outTurretPos = transform.position;
@@ -75,7 +75,7 @@ public class MountTurret : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         GameObject turret = other.gameObject;
         if(turret.tag == "Turret"){
-            Debug.Log("get seat");
+            //Debug.Log("get seat");
             turretAccessor = turret.GetComponent<TurretAccessor>();
             
         }
@@ -84,7 +84,7 @@ public class MountTurret : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         GameObject turret = other.gameObject;
         if(turret.tag == "Turret"){
-            Debug.Log("no seat");
+            //Debug.Log("no seat");
             turretAccessor = null;
         }
     }

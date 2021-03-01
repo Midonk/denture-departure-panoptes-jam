@@ -20,7 +20,9 @@ public class TurretController : MonoBehaviour
     [Range(0.0f, 1000.0f)]
     public float MaxRange = 200.0f;
     public Vector2 VerticalRotationRange; 
-    public float VFXDuraction = 0.1f;
+    public float VFXDuration = 0.4f;
+    public float lightDuration = 0.05f;
+
 
     [Header("References")]
     public Camera MainCamera;
@@ -30,8 +32,8 @@ public class TurretController : MonoBehaviour
     public Animator animator;
     public Transform LeftMouth;
     public Transform RightMouth;
-    public Transform LeftEffect;
-    public Transform RightEffect;
+    public VisualEffect LeftEffect;
+    public VisualEffect RightEffect;
     public AudioSource asource;
     public AudioClip pan;
 
@@ -101,7 +103,6 @@ public class TurretController : MonoBehaviour
     public void Damage(int amount)
     {
         Health = Mathf.Clamp(Health - amount, 0, MaxHealth);
-        Debug.Log(Health);
 
         if(Health > 0)
         {
@@ -131,7 +132,12 @@ public class TurretController : MonoBehaviour
     {
         VFXDurationTimer += Time.deltaTime;
 
-        if(VFXDurationTimer > VFXDuraction)
+        if(VFXDurationTimer > lightDuration)
+        {
+            LeftEffect.GetComponent<Light>().enabled = false;
+            RightEffect.GetComponent<Light>().enabled = false;
+        }
+        if(VFXDurationTimer > VFXDuration)
         {
             RightEffect.gameObject.SetActive(false);
             LeftEffect.gameObject.SetActive(false);
@@ -141,8 +147,8 @@ public class TurretController : MonoBehaviour
             CurrentPivotRotation = Mathf.Clamp(CurrentPivotRotation + (-InputManager.Instance.MouseOffset.y * Sensitivity * Time.deltaTime), VerticalRotationRange.x, VerticalRotationRange.y);
             CurrentHeadRotation += InputManager.Instance.MouseOffset.x * Sensitivity * Time.deltaTime;
 
-            Head.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
-            CannonPivot.rotation = Quaternion.Euler(0.0f, CurrentHeadRotation, CurrentPivotRotation);
+            Head.localRotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
+            CannonPivot.localRotation = Quaternion.Euler(0.0f, 0.0f, CurrentPivotRotation);
 
 
             if(BulletAmount > 0)
@@ -175,15 +181,19 @@ public class TurretController : MonoBehaviour
 
                     if(ShootLeft)
                     {
-                        animator.Play("ShootLeft");
                         LeftEffect.gameObject.SetActive(true);
-                        RightEffect.gameObject.SetActive(false);
+                        animator.Play("ShootLeft");
+                        LeftEffect.Play();
+                        RightEffect.GetComponent<Light>().enabled = true;
+                        //RightEffect.gameObject.SetActive(false);
                         LeftMouth.Rotate(new Vector3(0.0f, 0.0f, -180f/32f), Space.Self);
                     }else
                     {
-                        animator.Play("ShootRight");
                         RightEffect.gameObject.SetActive(true);
-                        LeftEffect.gameObject.SetActive(false);
+                        animator.Play("ShootRight");
+                        RightEffect.Play();
+                        LeftEffect.GetComponent<Light>().enabled = true;
+                        //LeftEffect.gameObject.SetActive(false);
                         RightMouth.Rotate(0.0f, 0.0f, -180.0f/32.0f, Space.Self);
 
                     }
@@ -231,8 +241,11 @@ public class TurretController : MonoBehaviour
             {
                 HUD.SetActive(false);
                 
-                 Head.rotation = Quaternion.Euler(Vector3.zero);
-                CannonPivot.rotation = Quaternion.Euler(Vector3.zero);
+                CurrentPivotRotation = 0;
+                CurrentHeadRotation = 0;
+
+                Head.localRotation = Quaternion.Euler(0.0f, CurrentHeadRotation, 0.0f);
+                CannonPivot.localRotation = Quaternion.Euler(0.0f, 0.0f, CurrentPivotRotation);
             }
         }
     }

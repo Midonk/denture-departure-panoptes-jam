@@ -69,7 +69,6 @@ public class GameManager : Singleton<GameManager>
     private void GameOver(bool won)
     {
         Debug.Log(won? "Gagné" : "Perdu");
-        Reticle.UnlockCursor();
         if(won){
             ConditionalPlaySound.Instance.PlayVictoire();
             SFXLibrary.Instance.PlayWarpSFX();

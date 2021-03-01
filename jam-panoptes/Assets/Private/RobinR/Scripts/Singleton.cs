@@ -9,7 +9,6 @@ public class Singleton<_INSTANCE_TYPE_> : MonoBehaviour
 
     protected virtual void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         Instance = this as _INSTANCE_TYPE_;
     }
 

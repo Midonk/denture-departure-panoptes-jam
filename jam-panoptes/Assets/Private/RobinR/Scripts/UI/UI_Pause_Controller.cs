@@ -13,5 +13,6 @@ public class UI_Pause_Controller : MonoBehaviour
     {
         level.InstantiateScene();
         GameManager.Instance.CancelGame();
+        Reticle.UnlockCursor();
     }
 }

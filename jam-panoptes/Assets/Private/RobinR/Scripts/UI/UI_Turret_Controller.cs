@@ -10,6 +10,8 @@ public class UI_Turret_Controller : MonoBehaviour
     public Text Text_BulletAmount;
     public Image Image_ReloadTimer;
     public Image Image_HealthBar;
+    public RectTransform LightRectTransform;
+    public Light LightObject;
 
 
     private void TurretController_OnBulletAmountChange(int next)
@@ -24,13 +26,20 @@ public class UI_Turret_Controller : MonoBehaviour
 
     private void TurretController_OnReloadTimerChange(float next)
     {
-        Image_ReloadTimer.fillAmount = Mathf.Clamp01(next / Turret.ReloadTime);
+        float percent = Mathf.Clamp01(next / Turret.ReloadTime);
+        Image_ReloadTimer.fillAmount = percent;
+
         if(next < Turret.ReloadTime)
         {
-            Text_BulletAmount.gameObject.SetActive(false);
+            Text_BulletAmount.text = "Rechargement";
+            //LightRectTransform.localPosition = new Vector3(288*percent, 0.0f, 0.0f);
+            LightObject.intensity = 1.0f * percent;
         }else
         {
-            Text_BulletAmount.gameObject.SetActive(true);
+            Text_BulletAmount.text = "64/64";
+            //LightRectTransform.localPosition = new Vector3(288, 0.0f, 0.0f);
+            LightObject.intensity = 1.0f;
+
         }
     }
 
@@ -38,6 +47,7 @@ public class UI_Turret_Controller : MonoBehaviour
         Turret.OnBulletAmountChange += TurretController_OnBulletAmountChange;
         TurretController.OnHealthChange += TurretController_OnHealthChange;
         Turret.OnReloadChange += TurretController_OnReloadTimerChange;
+        gameObject.SetActive(false);
     }
 
     private void Update(){}
