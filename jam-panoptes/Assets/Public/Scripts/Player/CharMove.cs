@@ -26,7 +26,7 @@ public class CharMove : MonoBehaviour
 
     private void MoveChar(){
         float dt = Time.deltaTime;
-        velocity = new Vector3(0, velocity.y, 0);
+        velocity = cc.isGrounded ? new Vector3(0, 0, 0) : new Vector3(0, velocity.y, 0);
         velocity += Physics.gravity * dt;
 
         input = InputManager.Instance.RawMovementDirection;
@@ -53,8 +53,13 @@ public class CharMove : MonoBehaviour
     }
 #endif
 
-    public void SetInTurret(bool next)
+    public void SetInTurret()
     {
-        animator.SetBool("inTurret", next);
+        animator.SetTrigger("inTurret");
+    }
+    
+    public void SetOutTurret()
+    {
+        animator.SetTrigger("outTurret");
     }
 }

@@ -15,8 +15,6 @@ public class MountTurret : MonoBehaviour
     public Transform player;
     private CharacterController cc;
     private CharMove charMove;
- /*    public AudioSource audioSource;
-    public AudioClip mountTurretSound; */
     public Transform leftHand;
     public Transform rightHand;
     private Rig posture;
@@ -42,7 +40,7 @@ public class MountTurret : MonoBehaviour
                 player.rotation = outTurretRot;
                 cinemachineVirtualCamera.Priority -= 10;
                 turretAccessor.SetActiveController(false);
-                charMove.SetInTurret(false);
+                charMove.SetOutTurret();
                 posture.weight = 0;
             }
 
@@ -61,7 +59,7 @@ public class MountTurret : MonoBehaviour
                 inTurret = true;
                 cinemachineVirtualCamera.Priority += 10;
                 turretAccessor.SetActiveController(true);
-                charMove.SetInTurret(true);
+                charMove.SetInTurret();
                 //audioSource.PlayOneShot(mountTurretSound);
                 leftHand.position = turretAccessor.leftController.position;
                 leftHand.rotation = turretAccessor.leftController.rotation;

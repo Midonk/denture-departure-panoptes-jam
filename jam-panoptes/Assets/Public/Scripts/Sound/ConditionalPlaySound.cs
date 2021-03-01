@@ -23,7 +23,7 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     }
 
     public void PLayDamage(int health){
-        bool critic = health <= TurretController.MaxHealth / 6; 
+        bool critic = health <= TurretController.MaxHealth / 3; 
         if(critic){
             PlayAttackedCritic();
         }
@@ -55,13 +55,13 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
 
     public void PlayVictoire(){
         AudioClip clip = victoirVoice[Random.Range(0, ennemiAbattu.Length - 1)];
-        PlayVoice(clip, 1);
+        PlayVoice(clip, 1, true);
         PlayMusic(victoirMusic);
     }
 
     public void PlayEchec(){
         AudioClip clip = echecVoice[Random.Range(0, echecVoice.Length - 1)];
-        PlayVoice(clip, randomness);
+        PlayVoice(clip, 1, true);
         PlayMusic(echecMusic);
     }
 
@@ -71,10 +71,10 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
         sourceMusic.Play();
     }
     
-    private void PlayVoice(AudioClip clip, float randomMax){
+    private void PlayVoice(AudioClip clip, float randomMax, bool force = false){
         float rng = Random.Range(0f, 1f);
 
-        if(!sourceVoice.isPlaying && rng <= randomMax){
+        if((!sourceVoice.isPlaying && rng <= randomMax) || force){
             sourceVoice.clip = clip;
             sourceVoice.Play();
         }

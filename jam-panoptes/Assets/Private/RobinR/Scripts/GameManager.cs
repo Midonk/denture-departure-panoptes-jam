@@ -70,6 +70,7 @@ public class GameManager : Singleton<GameManager>
     private void GameOver(bool won)
     {
         Debug.Log(won? "Gagné" : "Perdu");
+        InGame = false;
         if(won){
             ConditionalPlaySound.Instance.PlayVictoire();
             SFXLibrary.Instance.PlayWarpSFX();
@@ -82,9 +83,6 @@ public class GameManager : Singleton<GameManager>
             HUDManager.Instance.ShowPanel(3);
             SetPause(true);
         }
-
-        //HUDManager.Instance.ShowPanel(won? 2 : 3);
-        InGame = false;
     }
 
     public void SetPause(bool isPaused)

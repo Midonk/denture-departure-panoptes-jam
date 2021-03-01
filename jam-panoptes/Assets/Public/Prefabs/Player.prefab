@@ -243,7 +243,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2783901620167065914}
-  m_LocalRotation: {x: -0.018101813, y: -0.81432146, z: -0.02543367, w: 0.579574}
+  m_LocalRotation: {x: -0.021915073, y: -0.70894814, z: -0.022051092, w: 0.70457506}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -287,7 +287,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7789047, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -453,7 +453,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2783901620264457120}
-  m_LocalRotation: {x: -0.034804285, y: -0.8132497, z: -0.04890122, w: 0.57881117}
+  m_LocalRotation: {x: -0.042219937, y: -0.7080177, z: -0.04248198, w: 0.70365036}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -497,7 +497,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7789047, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -782,7 +782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2783901621509432286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29164076, y: 0.08000004, z: 0.105098516}
+  m_LocalPosition: {x: 0.30994356, y: 0.08000004, z: 0.005917806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2783901620167065912}
@@ -821,7 +821,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7789047, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -923,15 +923,15 @@ MonoBehaviour:
     m_Bits: 4
   m_MinimumDistanceFromTarget: 0.01
   m_AvoidObstacles: 1
-  m_DistanceLimit: 0.19
-  m_MinimumOcclusionTime: 0.5
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.06
   m_Strategy: 0
   m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0
-  m_OptimalTargetDistance: 0
+  m_SmoothingTime: 1
+  m_Damping: 10
+  m_DampingWhenOccluded: 10
+  m_OptimalTargetDistance: 0.5
 --- !u!1 &2783901621620700438
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2783901621735795856}
-  m_LocalRotation: {x: -0.051367752, y: -0.8115155, z: -0.07217347, w: 0.5775769}
+  m_LocalRotation: {x: -0.06235588, y: -0.7065105, z: -0.062742904, w: 0.70215243}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1030,7 +1030,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7773654, y: 1}
+    m_SensorSize: {x: 1.7789047, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3054300467775825536}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
   m_Name: 
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3054300467775825536}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
   m_Name: 
@@ -1377,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3832375428452690440, guid: d27c4d6364d06fb4a98cd365f921843d, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7773654
+      value: 1.7789047
       objectReference: {fileID: 0}
     - target: {fileID: 3832375428452690440, guid: d27c4d6364d06fb4a98cd365f921843d, type: 3}
       propertyPath: m_Follow
