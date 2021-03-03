@@ -19,11 +19,11 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     // Start is called before the first frame update
     void Start()
     {
-        TurretController.OnHealthChange += PLayDamage;
+        GameManager.Instance.OnHealthAmountChange += PlayDamage;
     }
 
-    public void PLayDamage(int health){
-        bool critic = health <= TurretController.MaxHealth / 3; 
+    public void PlayDamage(int health, int max){
+        bool critic = health <= max / 3; 
         if(critic){
             PlayAttackedCritic();
         }

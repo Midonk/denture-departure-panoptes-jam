@@ -7,8 +7,6 @@ public class TurretController : MonoBehaviour
 {
     [Header("Parameters")]
 
-    [Range(1, 1000)]
-    public static int MaxHealth = 50;
     [Range(0.0f, 200.0f)]
     public float Sensitivity = 2.0f;
     [Range(0.0f, 2.0f)]
@@ -42,7 +40,6 @@ public class TurretController : MonoBehaviour
     private bool _IsDead = false;
     private float CurrentHeadRotation;
     private float CurrentPivotRotation;
-    private static int _Health;
     private float ShootTimer;
     private float _ReloadTimer;
     private int _BulletAmount;
@@ -50,13 +47,6 @@ public class TurretController : MonoBehaviour
     
 
     // #Exposure
-    private int Health{
-        get{return _Health;}
-        set{
-            _Health = value;
-            OnHealthChange?.Invoke(_Health);
-        }
-    }
 
     private bool IsDead{
         get{return _IsDead;}
@@ -102,15 +92,7 @@ public class TurretController : MonoBehaviour
 
     public void Damage(int amount)
     {
-        Health = Mathf.Clamp(Health - amount, 0, MaxHealth);
-
-        if(Health > 0)
-        {
-            IsDead = false;
-        }else
-        {
-            IsDead = true;
-        }
+        IsDead = !GameManager.Instance.Damage(amount);
     }
 
     private void This_OnDeath(bool next)
@@ -122,7 +104,6 @@ public class TurretController : MonoBehaviour
     void Start()
     {
         BulletAmount = MaxBulletAmount;
-        _Health = MaxHealth;
 
         OnDeath += This_OnDeath;
     }
@@ -132,12 +113,12 @@ public class TurretController : MonoBehaviour
     {
         VFXDurationTimer += Time.deltaTime;
 
-        if(VFXDurationTimer > lightDuration)
+        if(RightEffect && LeftEffect && VFXDurationTimer > lightDuration)
         {
             LeftEffect.GetComponent<Light>().enabled = false;
             RightEffect.GetComponent<Light>().enabled = false;
         }
-        if(VFXDurationTimer > VFXDuration)
+        if(RightEffect && LeftEffect && VFXDurationTimer > VFXDuration)
         {
             RightEffect.gameObject.SetActive(false);
             LeftEffect.gameObject.SetActive(false);

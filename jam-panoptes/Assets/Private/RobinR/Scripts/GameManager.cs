@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Parameters")]
     public float GameWonTime = 10.0f;
+    public int MaxHealth = 100;
     public float MaxCheeseAmount = 10.0f;
     public float ChangeSpawnTime = 30.0f;
 
@@ -15,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     private bool InPause = false;
     private int _AliveTurretsAmount;
     private float _GameWonTimer;
+    private int _HealthAmount;
     private float _CheeseAmount;
     private bool firstCheese = true;
     private float ChangeSpawnTimer;
@@ -46,16 +48,32 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    private int HealthAmount{
+        get{return _HealthAmount;}
+        set{
+            _HealthAmount = value;
+            OnHealthAmountChange?.Invoke(_HealthAmount, MaxHealth);
+        }
+    }
+
     public delegate void AliveTurretsAmountChangeHandler(int next);
     public event AliveTurretsAmountChangeHandler OnAliveTurretsAmountsChange;
     public delegate void WonTimerChangeHandler(float next);
     public event WonTimerChangeHandler OnWonTimerChange;
     public delegate void CheeseAmountChangeHandler(float next);
     public event CheeseAmountChangeHandler OnCheeseAmountChange;
+    public delegate void HealthAmountChangeHandler(int next, int max);
+    public event HealthAmountChangeHandler OnHealthAmountChange;
     
     private void TurretController_OnDeath(bool next)
     {
         GameOver(false);
+    }
+    public bool Damage(int amount)
+    {
+        HealthAmount = Mathf.Clamp(HealthAmount - amount, 0, MaxHealth);
+
+        return HealthAmount > 0;
     }
 
     public void AddCheese(float amount)
@@ -111,6 +129,7 @@ public class GameManager : Singleton<GameManager>
     public void NewGame()
     {
         SetPause(false);
+        _HealthAmount = MaxHealth;
         InGame = true;
 
         GameObject[] turretObjects = GameObject.FindGameObjectsWithTag("Turret");
