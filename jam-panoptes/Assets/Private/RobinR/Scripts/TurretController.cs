@@ -93,6 +93,9 @@ public class TurretController : MonoBehaviour
 
     public delegate void ReloadingHandler(float timePercentage);
     public event ReloadingHandler OnReloadChange;
+    
+    public delegate void ReloadHandler();
+    public static event ReloadHandler OnReload;
 
     public delegate void HealthHandler(int next);
     public static event HealthHandler OnHealthChange;
@@ -214,6 +217,7 @@ public class TurretController : MonoBehaviour
                         }
 
                         ReloadTimer = 0;
+                        OnReload?.Invoke();
                     }
                 }
             }else
