@@ -234,4 +234,8 @@ public class TurretController : MonoBehaviour
             }
         }
     }
+
+    private void OnDisable() {
+        OnReload = null;
+    }
 }

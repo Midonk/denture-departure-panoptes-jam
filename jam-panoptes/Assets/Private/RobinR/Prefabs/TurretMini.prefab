@@ -3072,6 +3072,8 @@ MonoBehaviour:
   controller: {fileID: 6904425420000972355}
   leftController: {fileID: 564684490503199544}
   rightController: {fileID: 4077808828495616915}
+  turretReady: {fileID: 8300000, guid: 0505860ab2d92eb4ba53f1b61a2532f0, type: 3}
+  turretReload: {fileID: 8300000, guid: 9958ca5cf089b7d40b41c7da640162ce, type: 3}
 --- !u!114 &6904425420000972355
 MonoBehaviour:
   m_ObjectHideFlags: 0

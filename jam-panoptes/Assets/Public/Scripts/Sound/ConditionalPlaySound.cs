@@ -34,12 +34,12 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     }
 
     private void PlayAttacked(){
-        AudioClip clip = vaisseauHit[Random.Range(0, vaisseauHit.Length - 1)];
+        AudioClip clip = vaisseauHit[Random.Range(0, vaisseauHit.Length)];
         PlayVoice(clip, randomness);
     }
     
     private void PlayAttackedCritic(){
-        AudioClip clip = vaisseauCritic[Random.Range(0, vaisseauCritic.Length - 1)];
+        AudioClip clip = vaisseauCritic[Random.Range(0, vaisseauCritic.Length)];
         PlayVoice(clip, randomness);
     }
 
@@ -49,18 +49,18 @@ public class ConditionalPlaySound : Singleton<ConditionalPlaySound>
     }
 
     public void PlayennemiAbattu(){
-        AudioClip clip = ennemiAbattu[Random.Range(0, ennemiAbattu.Length - 1)];
+        AudioClip clip = ennemiAbattu[Random.Range(0, ennemiAbattu.Length)];
         PlayVoice(clip, randomness);
     }
 
     public void PlayVictoire(){
-        AudioClip clip = victoirVoice[Random.Range(0, ennemiAbattu.Length - 1)];
+        AudioClip clip = victoirVoice[Random.Range(0, victoirVoice.Length)];
         PlayVoice(clip, 1, true);
         PlayMusic(victoirMusic);
     }
 
     public void PlayEchec(){
-        AudioClip clip = echecVoice[Random.Range(0, echecVoice.Length - 1)];
+        AudioClip clip = echecVoice[Random.Range(0, echecVoice.Length)];
         PlayVoice(clip, 1, true);
         PlayMusic(echecMusic);
     }

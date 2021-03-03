@@ -17,15 +17,20 @@ public class TurretAccessor : MonoBehaviour
     private void Awake() {
         gameObject.tag = "Turret";
         source = GetComponent<AudioSource>();
-        TurretController.OnReload += Reload;
     }
 
     public void SetActiveController(bool next)
     {
         controller.Controllable = next;
         if(next){
+            TurretController.OnReload += Reload;
             source.clip = turretReady;
             source.Play();
+        }
+
+        else
+        {
+            TurretController.OnReload -= Reload;
         }
     }
 

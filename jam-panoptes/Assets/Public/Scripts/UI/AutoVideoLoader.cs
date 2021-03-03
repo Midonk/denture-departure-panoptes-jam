@@ -5,7 +5,7 @@ using UnityEngine.Video;
 public class AutoVideoLoader : MonoBehaviour
 {
     public VideoPlayer player;
-    public AudioSource audio;
+    public AudioSource source;
 
     private void Awake() {
         
@@ -19,11 +19,11 @@ public class AutoVideoLoader : MonoBehaviour
     
     private void OnDisable() {
         player.Stop();
-        audio.Play();
+        source.Play();
     }
 
     public void PlayVideo(){
         player.Play();
-        audio.Pause();
+        source.Pause();
     }
 }

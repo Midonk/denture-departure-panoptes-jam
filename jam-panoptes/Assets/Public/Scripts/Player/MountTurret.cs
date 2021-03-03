@@ -30,23 +30,20 @@ public class MountTurret : MonoBehaviour
     {
         if(InputManager.Instance.InteractDown){
             if(inTurret){
-                //Debug.Log("dismount");
                 cc.enabled = true;
                 charMove.enabled = true;
                 inTurret = false;
-                transform.position = outTurretPos;
                 player.parent = transform;
+                charMove.SetOutTurret();
                 player.localPosition = Vector3.zero;
+                transform.position = outTurretPos;
                 player.rotation = outTurretRot;
                 cinemachineVirtualCamera.Priority -= 10;
                 turretAccessor.SetActiveController(false);
-                charMove.SetOutTurret();
                 posture.weight = 0;
             }
 
-            else if(turretAccessor){
-                //Debug.Log("mount");
-                
+            else if(turretAccessor){                
                 TriggerScript.Trigger();
                 outTurretPos = transform.position;
                 outTurretRot = transform.rotation;
@@ -54,13 +51,12 @@ public class MountTurret : MonoBehaviour
                 charMove.enabled = false;
                 //set la position du perso dans la tourelle
                 transform.position = turretAccessor.seat.position;
-                player.parent = turretAccessor.seat;
                 player.rotation = turretAccessor.seat.rotation;
+                charMove.SetInTurret();
+                player.parent = turretAccessor.seat;
                 inTurret = true;
                 cinemachineVirtualCamera.Priority += 10;
                 turretAccessor.SetActiveController(true);
-                charMove.SetInTurret();
-                //audioSource.PlayOneShot(mountTurretSound);
                 leftHand.position = turretAccessor.leftController.position;
                 leftHand.rotation = turretAccessor.leftController.rotation;
                 rightHand.position = turretAccessor.rightController.position;
@@ -73,16 +69,13 @@ public class MountTurret : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         GameObject turret = other.gameObject;
         if(turret.tag == "Turret"){
-            //Debug.Log("get seat");
             turretAccessor = turret.GetComponent<TurretAccessor>();
-            
         }
     }
     
     private void OnTriggerExit(Collider other) {
         GameObject turret = other.gameObject;
         if(turret.tag == "Turret"){
-            //Debug.Log("no seat");
             turretAccessor = null;
         }
     }
