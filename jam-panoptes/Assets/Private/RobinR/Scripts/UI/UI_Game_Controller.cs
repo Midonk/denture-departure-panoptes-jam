@@ -8,6 +8,7 @@ public class UI_Game_Controller : MonoBehaviour
     [Header("References")]
     public GameManager Game;
     public Image Image_TimerBar;
+    public Image Image_HealthBar;
     public Image Image_CheeseBar;
 
     public Text Text_Tutorial;
@@ -24,6 +25,11 @@ public class UI_Game_Controller : MonoBehaviour
     private void GameManager_OnCheeseAmountChange(float next)
     {
         Image_CheeseBar.fillAmount = next / Game.MaxCheeseAmount;
+    }
+
+    private void GameManager_OnHealthAmountChange(int next, int max)
+    {
+        Image_HealthBar.fillAmount = next * 1.0f / max;
     }
 
     public void ShowTutorial(int index, float showTime)
@@ -49,6 +55,7 @@ public class UI_Game_Controller : MonoBehaviour
         Game = GameManager.Instance;
         Game.OnWonTimerChange += GameManager_OnTimerChange;
         Game.OnCheeseAmountChange += GameManager_OnCheeseAmountChange;
+        Game.OnHealthAmountChange += GameManager_OnHealthAmountChange;
     }
 
     private void Update()
