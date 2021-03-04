@@ -44,7 +44,6 @@ public class MountTurret : MonoBehaviour
             }
 
             else if(turretAccessor){                
-                TriggerScript.Trigger();
                 outTurretPos = transform.position;
                 outTurretRot = transform.rotation;
                 cc.enabled = false;
@@ -62,6 +61,7 @@ public class MountTurret : MonoBehaviour
                 rightHand.position = turretAccessor.rightController.position;
                 rightHand.rotation = turretAccessor.rightController.rotation;
                 posture.weight = 1;
+                TriggerScript.Trigger();
             }
         }
     }

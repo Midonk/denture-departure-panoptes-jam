@@ -8,6 +8,8 @@ public class TurretAccessor : MonoBehaviour
     public TurretController controller;
     public Transform leftController;
     public Transform rightController;
+    public TriggerScripted triggerEnter;
+    public TriggerScripted triggerExit;
 
     [Header("Audio")]
     public AudioClip turretReady;
@@ -23,6 +25,7 @@ public class TurretAccessor : MonoBehaviour
     {
         controller.Controllable = next;
         if(next){
+            triggerEnter.Trigger();
             TurretController.OnReload += Reload;
             source.clip = turretReady;
             source.Play();
@@ -30,6 +33,7 @@ public class TurretAccessor : MonoBehaviour
 
         else
         {
+            triggerExit.Trigger();
             TurretController.OnReload -= Reload;
         }
     }

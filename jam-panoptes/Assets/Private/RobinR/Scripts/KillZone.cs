@@ -5,8 +5,22 @@ using UnityEngine;
 public class KillZone : MonoBehaviour
 {
     public Transform respawnPoint;
-    private void OnTriggerStay(Collider other)
+    private GameObject other;
+
+    private void OnTriggerEnter(Collider other)
     {
-        other.transform.position = respawnPoint.position; 
+        this.other = other.gameObject; 
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        this.other = null;
+    }
+
+    private void Update()
+    {
+        if(other)
+        {
+            other.transform.position = respawnPoint.position;
+        }
     }
 }

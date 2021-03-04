@@ -12,6 +12,7 @@ public class UI_Game_Controller : MonoBehaviour
     public Image Image_CheeseBar;
 
     public Text Text_Tutorial;
+    public GameObject Object_Text_Tip;
     public string[] Tutorials;
 
     private float ShowTime;
@@ -34,17 +35,24 @@ public class UI_Game_Controller : MonoBehaviour
 
     public void ShowTutorial(int index, float showTime)
     {
-        /* Text_Tutorial.transform.parent.gameObject.SetActive(true);
-        Text_Tutorial.text = Tutorials[index];
+        if(index != 4)
+        {
+            Text_Tutorial.transform.parent.gameObject.SetActive(true);
+            Text_Tutorial.text = Tutorials[index];
+        }else
+        {
+            Object_Text_Tip.gameObject.SetActive(true);
+        }
 
         ShowTime = showTime;
-        ShowTimer = 0; */
+        ShowTimer = 0; 
     }
 
     public void HideTutorial()
     {
         Text_Tutorial.transform.parent.gameObject.SetActive(false);
         Text_Tutorial.text = "";
+        Object_Text_Tip.gameObject.SetActive(false);
     }
 
     private void Start(){

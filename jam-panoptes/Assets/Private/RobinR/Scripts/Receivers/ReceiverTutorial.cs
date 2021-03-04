@@ -9,6 +9,6 @@ public class ReceiverTutorial : Receiver
     public float TutorialShowTime;
     public override void OutCome()
     {
-        //GameController.ShowTutorial(TutorialIndex, TutorialShowTime);
+        GameController.ShowTutorial(TutorialIndex, TutorialShowTime);
     }
 }
