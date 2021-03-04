@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TargetShip : TargetController
 {
@@ -19,6 +20,7 @@ public class TargetShip : TargetController
     public Transform Cannon;
     public Transform Spawner{get;set;}
     public Transform TargetTurret{get;set;}
+    public VisualEffect Explosion;
 
     [Header("Hidden")]
     private float RoamingTime;
@@ -26,6 +28,7 @@ public class TargetShip : TargetController
     private float RoamingTimer;
     private Vector3 Destination;
     private float TravelDistance;
+    private bool isDead;
 
     private void UpdateDestination()
     {
@@ -42,13 +45,17 @@ public class TargetShip : TargetController
         if(Health <= 0)
         {
             ConditionalPlaySound.Instance.PlayennemiAbattu();
-            Destroy(gameObject);
+            isDead = true;
+            transform.GetChild(0).gameObject.SetActive(false);
+            Explosion.Play();
+            Destroy(gameObject, 1.0f);
         }
     }
 
     protected override void Awake()
     {
         base.Awake();
+        Explosion.Stop();
     }
 
     private void Start()
@@ -61,7 +68,7 @@ public class TargetShip : TargetController
         RoamingTimer += Time.deltaTime;
         ShootTimer += Time.deltaTime;
 
-        if(RoamingTimer >= RoamingTime)
+        if(!isDead && RoamingTimer >= RoamingTime)
         {
             UpdateDestination();
 
@@ -69,7 +76,7 @@ public class TargetShip : TargetController
             RoamingTime = Random.Range(RoamingTimeRange.x, RoamingTimeRange.y);
         }
 
-        if(TravelDistance > 0)
+        if(!isDead && TravelDistance > 0)
         {
             Vector3 direction = (Destination - transform.position).normalized;
 
@@ -79,7 +86,7 @@ public class TargetShip : TargetController
 
         transform.LookAt(TargetTurret);
 
-        if(ShootTimer >= ShootTime)
+        if(!isDead && ShootTimer >= ShootTime)
         {
             TargetController target = null;
 
