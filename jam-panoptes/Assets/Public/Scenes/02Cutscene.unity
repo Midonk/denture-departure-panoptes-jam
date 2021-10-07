@@ -270,7 +270,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186282405}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: a96d371b6d1fd8f4183f3e125b09bb39, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 8ccdf0ca03793bb4a9888c761e4b8980, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -549,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 1965766231}
     - target: {fileID: 3949622521393925962, guid: 77e82b3dc52ac8941ad1cbf92babeebc, type: 3}
       propertyPath: time
-      value: 37
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 4093042635117838667, guid: 77e82b3dc52ac8941ad1cbf92babeebc, type: 3}
       propertyPath: m_Name

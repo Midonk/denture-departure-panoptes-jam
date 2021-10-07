@@ -18,6 +18,11 @@ public class CharMove : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    public void ResetVelocity(){
+        velocity = Vector3.zero;
+        transform.position = new Vector3(-1, 1, 0);
+    }
+
     // Update is called once per frame
     void Update()
     {
